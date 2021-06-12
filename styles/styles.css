@@ -1,23 +1,47 @@
 body {
-  overflow: hidden;
+	 overflow: hidden;
 }
-.base {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+ .base {
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 width: 100vw;
+	 height: 100vh;
 }
-#background div {
-  background-color: rgba(172, 186, 198, 0.7);
-  width: 100%;
-  height: 100%;
+ #background div {
+	 background-color: rgba(172, 186, 198, 0.7);
+	 width: 100%;
+	 height: 100%;
 }
-#background img {
-  min-width: 100%;
-  min-height: 100%;
+ #background img {
+	 min-width: 100%;
+	 min-height: 100%;
 }
-#background .transition {
-  transition: opacity;
-  transition-timing-function: ease;
+ #background .transition {
+	 transition: opacity;
+	 transition-timing-function: ease;
 }
+ #ridingResults {
+	 display: grid;
+	 grid-template-columns: 1fr 10fr 1fr 5fr;
+	 grid-template-rows: 1fr 1fr 50vh 1fr 20vh;
+	 grid-template-areas: "header header header rightBar" ". . . rightBar" ". main . rightBar" ". . . rightBar" "footer footer footer rightBar";
+	 z-index: 4;
+}
+ #ridingResults .content {
+	 width: 100%;
+	 height: 100%;
+}
+ #ridingResults #header {
+	 grid-area: header;
+	 background: red;
+}
+ #ridingResults #rightBar {
+	 grid-area: rightBar;
+	 background: green;
+}
+ #ridingResults #footer {
+	 grid-area: footer;
+	 background: blue;
+}
+ 
