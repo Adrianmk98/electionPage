@@ -36,9 +36,116 @@ body {
 	 grid-area: header;
 	 background: red;
 }
+ #ridingResults #main {
+	 grid-area: main;
+	 display: flex;
+	 flex-direction: row;
+	 justify-content: space-evenly;
+}
+ #ridingResults #main .candidate {
+	 height: 100%;
+	 width: 200px;
+	 display: grid;
+	 border-left: solid 5px blue;
+	 grid-template-columns: 10px 1fr 1fr;
+	 grid-template-rows: auto 40% 20px 20% 25% auto;
+	 grid-template-areas: ". . ." ". face ." ". face party" ". name name" ". vote vote" ". . .";
+}
+ #ridingResults #main .candidate img {
+	 grid-area: face;
+	 width: 100%;
+	 height: 100%;
+}
+ #ridingResults #main .candidate .party {
+	 grid-area: party;
+	 justify-self: end;
+	 width: 90%;
+	 height: 100%;
+	 padding-left: 5px;
+	 background-color: red;
+	 color: white;
+	 border-top-left-radius: 10px;
+	 border-bottom-left-radius: 10px;
+}
+ #ridingResults #main .candidate .name {
+	 grid-area: name;
+	 color: #3e4d4d;
+	 width: 90%;
+	 height: 90%;
+	 padding-top: 5%;
+	 font-size: 5vh;
+}
+ #ridingResults #main .candidate :not(.cover,.bottom) {
+	 z-index: 4;
+}
+ #ridingResults #main .candidate .cover {
+	 grid-row-start: 1;
+	 grid-column-start: 1;
+	 grid-row-end: 5;
+	 grid-column-end: last;
+	 width: 100%;
+	 height: 100%;
+	 background: linear-gradient(45deg, rgba(255, 255, 255, 0.75) 0%, rgba(100, 100, 100, 0.5) 100%);
+}
+ #ridingResults #main .candidate .bottom {
+	 grid-row-start: 5;
+	 grid-column-start: 1;
+	 grid-row-end: last;
+	 grid-column-end: last;
+	 background-color: rgba(104, 110, 122, 0.75);
+}
+ #ridingResults #main .candidate .vote {
+	 grid-area: vote;
+	 display: flex;
+	 width: 100%;
+	 height: 90%;
+	 margin-top: 5%;
+}
+ #ridingResults #main .candidate .vote * {
+	 height: 100%;
+	 width: 50%;
+}
+ #ridingResults #main .candidate .vote .percent {
+	 display: flex;
+	 flex-direction: column;
+	 color: white;
+	 border-right: solid 2px #3e4d4d;
+}
+ #ridingResults #main .candidate .vote .percent h1 {
+	 margin-left: 10%;
+	 text-align: center;
+}
+ #ridingResults #main .candidate .vote .percent #progressBar {
+	 width: 90%;
+	 height: 10px;
+	 background-color: #3e4d4d;
+}
+ #ridingResults #main .candidate .vote .percent #progressBar * {
+	 width: 70%;
+	 transition: width 0.5s ease;
+	 background: black;
+}
+ #ridingResults #main .candidate .vote .voteCount.winner {
+	 margin-left: 5%;
+}
+ #ridingResults #main .candidate .vote .voteCount {
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: space-evenly;
+	 margin-left: 15%;
+}
+ #ridingResults #main .candidate .vote .voteCount * {
+	 width: fit-content;
+	 height: fit-content;
+	 color: white;
+	 margin-top: 0%;
+	 margin-bottom: 0%;
+}
  #ridingResults #rightBar {
 	 grid-area: rightBar;
 	 background: green;
+	 display: flex;
+	 flex-direction: column;
 }
  #ridingResults #footer {
 	 grid-area: footer;
