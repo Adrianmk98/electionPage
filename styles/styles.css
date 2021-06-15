@@ -158,9 +158,52 @@ body {
 }
  #ridingResults #rightBar {
 	 grid-area: rightBar;
-	 background: green;
+	 background: rgba(38, 49, 64, 1);
 	 display: flex;
 	 flex-direction: column;
+}
+ #ridingResults #rightBar #logo {
+	 height: 15vh;
+	 display: flex;
+	 justify-content: center;
+	 margin-top: 5vh;
+	 margin-bottom: 5vh;
+}
+ #ridingResults #rightBar #logo * {
+	 align-self: center;
+}
+ #ridingResults #rightBar #logo img {
+	 height: 100%;
+	 width: auto;
+}
+ #ridingResults #rightBar #logo div {
+	 display: block;
+	 position: relative;
+	 margin-left: 0.1vw;
+	 align-self: flex-end;
+}
+ #ridingResults #rightBar #logo div div {
+	 color: white;
+}
+ #ridingResults #rightBar #logo div div:first-child {
+	 font-size: 7vh;
+	 padding-top: 1vh;
+	 padding-bottom: 1vh;
+	 padding-left: 1vw;
+	 padding-right: 1vw;
+	 border-top: solid white 2px;
+	 border-bottom: solid white 2px;
+}
+ #ridingResults #rightBar #logo div div:last-child {
+	 position: absolute;
+	 width: fit-content;
+	 padding-left: 2vw;
+	 padding-right: 2vw;
+	 font-size: 2vh;
+	 bottom: -1vh;
+	 left: 50%;
+	 transform: translate(-50%, 0);
+	 background-color: rgba(38, 49, 64, 1);
 }
  #ridingResults #footer {
 	 grid-area: footer;
