@@ -63,7 +63,36 @@ body
 	#header
 	{
 		grid-area: header;
-		background: red;
+		background: #9FAFB9;
+
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+		display: flex;
+
+		justify-content: space-between;
+
+		*
+		{
+			align-self: flex-end;
+
+			font-size: 3vh;
+
+			color: #2B3236;
+
+			padding-left: 5vw;
+			padding-right: 5vw;
+
+			margin-bottom: 2vh;
+		}
+
+		:last-child
+		{
+			border-left: solid 3px black;
+			padding-left: 0.5vw;
+		}
+
+
+
 	}
 
 	#main
