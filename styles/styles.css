@@ -24,7 +24,7 @@ body {
  #ridingResults {
 	 display: grid;
 	 grid-template-columns: 1fr 10fr 1fr 5fr;
-	 grid-template-rows: 1fr 1fr 50vh 1fr 20vh;
+	 grid-template-rows: 10vh 1fr 50vh 1fr 15vh;
 	 grid-template-areas: "header header header rightBar" ". . . rightBar" ". main . rightBar" ". . . rightBar" "footer footer footer rightBar";
 	 z-index: 4;
 }
@@ -164,6 +164,38 @@ body {
 }
  #ridingResults #footer {
 	 grid-area: footer;
-	 background: blue;
+	 background: #1d2935;
+	 display: flex;
+	 justify-content: center;
+}
+ #ridingResults #footer > * {
+	 align-self: center;
+	 height: 10vh;
+}
+ #ridingResults #footer .party {
+	 background-color: purple;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: space-around;
+	 width: 10vh;
+	 margin-left: 5vh;
+	 margin-right: 5vh;
+	 border-radius: 1vh;
+}
+ #ridingResults #footer .party > * {
+	 width: fit-content;
+	 align-self: center;
+	 text-align: center;
+	 color: white;
+}
+ #ridingResults #footer .party .seat {
+	 width: fit-content;
+	 height: fit-content;
+	 background-color: rgba(0, 0, 0, 0.5);
+	 padding: 10% 35%;
+}
+ #ridingResults #footer .separator {
+	 width: 2px;
+	 background-color: #434b4e;
 }
  
