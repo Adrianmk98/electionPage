@@ -159,6 +159,8 @@ body {
  #ridingResults #rightBar {
 	 grid-area: rightBar;
 	 background: rgba(38, 49, 64, 1);
+	 padding-left: 5px;
+	 width: calc(100% - 5px);
 	 display: flex;
 	 flex-direction: column;
 }
@@ -204,6 +206,68 @@ body {
 	 left: 50%;
 	 transform: translate(-50%, 0);
 	 background-color: rgba(38, 49, 64, 1);
+}
+ #ridingResults #rightBar #secondaryPoll {
+	 width: 100%;
+}
+ #ridingResults #rightBar #secondaryPoll .reportingPolls {
+	 color: white;
+}
+ #ridingResults #rightBar #secondaryPoll .reportingPolls {
+	 font-size: 4vh;
+	 margin-left: 10px;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates {
+	 height: 50vh;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate {
+	 height: 30%;
+	 width: 85%;
+	 display: grid;
+	 grid-template-columns: 1fr 3fr;
+	 grid-template-rows: 1fr 1fr 1fr;
+	 grid-template-areas: "face party" "face name" "face vote";
+	 border-radius: 10px;
+	 margin-top: 10px;
+	 background-color: #bfc8d3;
+	 overflow: hidden;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate img {
+	 grid-area: face;
+	 height: 100%;
+	 width: auto;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate > div {
+	 width: 100%;
+	 height: 100%;
+	 display: flex;
+	 justify-content: space-between;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate > div > div {
+	 align-self: center;
+	 margin-left: 5px;
+	 margin-right: 15px;
+	 font-size: 2.3vh;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate #party {
+	 grid-area: party;
+	 color: #bfc8d3;
+	 border-top-left-radius: 5px;
+	 border-bottom-left-radius: 5px;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate #name {
+	 background-color: #bfc8d3;
+	 color: #56636e;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate #vote {
+	 background-color: #56636e;
+	 color: #bfc8d3;
+}
+ #ridingResults #rightBar #secondaryPoll .candidates .candidate:first-child {
+	 height: 40%;
+	 width: 100%;
+	 border-top-right-radius: 0px;
+	 border-bottom-right-radius: 0px;
 }
  #ridingResults #footer {
 	 grid-area: footer;

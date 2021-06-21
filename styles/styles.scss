@@ -278,6 +278,9 @@ body
 		grid-area: rightBar;
 		background: $rightBarBackGroundColour;
 
+		padding-left: 5px;
+		width: calc(100% - 5px);;
+
 		display: flex;
 		flex-direction: column;
 
@@ -346,7 +349,113 @@ body
 					
 				}
 			}
+		}
 
+		#secondaryPoll
+		{
+			width: 100%;
+
+			.reportingPolls
+			{
+				color: white;
+			}
+			.reportingPolls
+			{
+				font-size: 4vh;
+				margin-left: 10px;
+			}
+			.candidates
+			{
+				height: 50vh;
+
+				.candidate
+				{
+					height: 30%;
+					width: 85%;
+
+					display: grid;
+
+					grid-template-columns: 1fr 3fr;
+
+					grid-template-rows: 1fr 1fr 1fr;
+
+					$mainColour: rgb(191, 200, 211);
+					$secondaryColour: rgb(86, 99, 110);
+
+					grid-template-areas:
+						"face party"
+						"face name"
+						"face vote";
+
+					border-radius: 10px;
+
+					margin-top: 10px;
+
+					background-color: $mainColour;
+
+					overflow: hidden;
+
+					img
+					{
+						grid-area: face;
+
+						height: 100%;
+						width: auto;
+					}
+
+					>div
+					{
+						width: 100%;
+						height: 100%;
+
+						display: flex;
+						justify-content: space-between;
+
+						>div
+						{
+							align-self: center;
+
+							margin-left: 5px;
+							margin-right: 15px;
+
+							font-size: 2.3vh;
+						}
+					}
+
+					#party
+					{
+						grid-area: party;
+
+						color: $mainColour;
+
+						border-top-left-radius: 5px;
+						border-bottom-left-radius: 5px;
+					}
+
+					#name
+					{
+						background-color: $mainColour;
+						color: $secondaryColour;
+					}
+
+					#vote
+					{
+						background-color: $secondaryColour;
+
+						color: $mainColour;
+					}
+
+
+				}
+				.candidate:first-child
+				{
+					height: 40%;
+					width: 100%;
+
+					border-top-right-radius: 0px;
+					border-bottom-right-radius: 0px;
+				}
+			}
 		}
 	}
 
