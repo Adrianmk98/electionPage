@@ -8,6 +8,9 @@ body {
 	 width: 100vw;
 	 height: 100vh;
 }
+ .progress {
+	 transition: width 0.5s ease;
+}
  #background div {
 	 background-color: rgba(172, 186, 198, 0.7);
 	 width: 100%;
@@ -135,9 +138,8 @@ body {
 	 height: 10px;
 	 background-color: #3e4d4d;
 }
- #ridingResults #main .candidate .vote .percent #progressBar * {
+ #ridingResults #main .candidate .vote .percent #progressBar .progress {
 	 width: 70%;
-	 transition: width 0.5s ease;
 	 background: black;
 }
  #ridingResults #main .candidate .vote .voteCount.winner {
@@ -229,7 +231,7 @@ body {
 	 height: 50vh;
 }
  #ridingResults #rightBar #secondaryPoll .candidates .candidate {
-	 height: 30%;
+	 height: 25%;
 	 width: 85%;
 	 display: grid;
 	 grid-template-columns: 1fr 3fr;
@@ -276,6 +278,51 @@ body {
 	 width: 100%;
 	 border-top-right-radius: 0px;
 	 border-bottom-right-radius: 0px;
+}
+ #ridingResults #rightBar #majorityMeter {
+	 height: 12.5vh;
+	 width: 85%;
+	 margin-top: 10%;
+	 border-radius: 10px;
+	 position: relative;
+	 background-color: #e5f0fd;
+}
+ #ridingResults #rightBar #majorityMeter #overlay {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 height: 100%;
+	 width: 100%;
+	 display: grid;
+	 grid-template-columns: 65% 35%;
+	 grid-template-rows: 30% 70%;
+	 color: #56636e;
+}
+ #ridingResults #rightBar #majorityMeter #overlay div {
+	 margin-left: 10px;
+	 margin-right: 10px;
+	 margin-top: 5%;
+	 font-size: 2.5vh;
+}
+ #ridingResults #rightBar #majorityMeter #overlay #bar {
+	 width: 2px;
+	 height: 90%;
+	 grid-column-start: 2;
+	 background-color: #56636e;
+}
+ #ridingResults #rightBar #majorityMeter #polling {
+	 height: 70%;
+	 width: 90%;
+	 margin-top: 10%;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: space-evenly;
+}
+ #ridingResults #rightBar #majorityMeter #polling .progress {
+	 margin-left: 15px;
+	 height: 5px;
+	 width: 0%;
+	 background-color: green;
 }
  #ridingResults #footer {
 	 grid-area: footer;

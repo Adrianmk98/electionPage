@@ -14,6 +14,10 @@ body
 
 }
 
+.progress
+{
+	transition: width 0.5s ease;
+}
 
 #background
 {
@@ -90,9 +94,6 @@ body
 			border-left: solid 3px black;
 			padding-left: 0.5vw;
 		}
-
-
-
 	}
 
 	#main
@@ -230,10 +231,9 @@ body
 
 						background-color: #3e4d4d;
 
-						*
+						.progress
 						{
 							width: 70%;
-							transition: width 0.5s ease;
 							background: black
 						}
 						
@@ -277,6 +277,8 @@ body
 		$rightBarBackGroundColour : rgba(38,49,64,1);
 		$mainColour: rgb(191, 200, 211);
 		$secondaryColour: rgb(86, 99, 110);
+
+		$primaryWidth: 85%;
 
 		grid-area: rightBar;
 		background: linear-gradient(0deg, $secondaryColour * 0.6 76.15vh, $rightBarBackGroundColour 76.15vh);
@@ -388,8 +390,8 @@ body
 
 				.candidate
 				{
-					height: 30%;
-					width: 85%;
+					height: 25%;
+					width: $primaryWidth;
 
 					display: grid;
 
@@ -470,6 +472,83 @@ body
 
 					border-top-right-radius: 0px;
 					border-bottom-right-radius: 0px;
+				}
+			}
+		}
+
+		#majorityMeter
+		{
+			height: 12.5vh;
+			width: $primaryWidth;
+
+			margin-top: 10%;
+
+			border-radius: 10px;
+
+			position: relative;
+
+			background-color: $mainColour * 1.2;
+
+			$marginLeft: 10px;
+			$marginTop: 5%;
+
+			#overlay
+			{
+				position: absolute;
+
+				top: 0;
+				left: 0;
+
+				height: 100%;
+				width: 100%;
+
+				display: grid;
+
+				grid-template-columns: 65% 35%;
+				grid-template-rows: 30% 70%;
+
+				color: $secondaryColour;
+
+				div
+				{
+					margin-left: $marginLeft;
+					margin-right: 10px;
+					margin-top: $marginTop;
+
+					font-size: 2.5vh;
+				}
+
+				#bar
+				{
+					width: 2px;
+					height: 90%;
+					
+					grid-column-start: 2;
+
+					background-color: $secondaryColour;
+				}
+			}
+			#polling
+			{
+				height: 70%;
+				width: 90%;
+
+				margin-top: 10%;
+
+				display: flex;
+
+				flex-direction: column;
+
+				justify-content: space-evenly;
+				
+				.progress
+				{
+					margin-left: $marginLeft * 1.5;
+
+					height: 5px;
+					width: 0%;
+					
+					background-color: green;
 				}
 			}
 		}
