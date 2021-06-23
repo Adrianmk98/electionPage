@@ -275,8 +275,11 @@ body
 	#rightBar
 	{
 		$rightBarBackGroundColour : rgba(38,49,64,1);
+		$mainColour: rgb(191, 200, 211);
+		$secondaryColour: rgb(86, 99, 110);
+
 		grid-area: rightBar;
-		background: $rightBarBackGroundColour;
+		background: linear-gradient(0deg, $secondaryColour * 0.6 76.15vh, $rightBarBackGroundColour 76.15vh);
 
 		padding-left: 5px;
 		width: calc(100% - 5px);;
@@ -286,12 +289,12 @@ body
 
 		#logo
 		{
-			height: 15vh;
+			height: 10vh;
 
 			display: flex;
 			justify-content: center;
 
-			margin-top: 5vh;
+			margin-top: 3vh;
 			margin-bottom: 5vh;
 
 			*
@@ -355,15 +358,30 @@ body
 		{
 			width: 100%;
 
-			.reportingPolls
+			#reportingPolls
 			{
 				color: white;
-			}
-			.reportingPolls
-			{
+			
 				font-size: 4vh;
 				margin-left: 10px;
 			}
+
+			#ridingName
+			{
+				width: 100%;
+				height: 5vh;
+
+				background-color: $mainColour;
+
+				font-size: 3vh;
+
+				padding-left: 10px;
+				padding-top: 3px;
+				padding-bottom: 7px;
+
+				margin-top: 10px;
+			}
+
 			.candidates
 			{
 				height: 50vh;
@@ -378,9 +396,7 @@ body
 					grid-template-columns: 1fr 3fr;
 
 					grid-template-rows: 1fr 1fr 1fr;
-
-					$mainColour: rgb(191, 200, 211);
-					$secondaryColour: rgb(86, 99, 110);
+					
 
 					grid-template-areas:
 						"face party"

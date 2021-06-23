@@ -158,17 +158,17 @@ body {
 }
  #ridingResults #rightBar {
 	 grid-area: rightBar;
-	 background: rgba(38, 49, 64, 1);
+	 background: linear-gradient(0deg, #343b42 76.15vh, rgba(38, 49, 64, 1) 76.15vh);
 	 padding-left: 5px;
 	 width: calc(100% - 5px);
 	 display: flex;
 	 flex-direction: column;
 }
  #ridingResults #rightBar #logo {
-	 height: 15vh;
+	 height: 10vh;
 	 display: flex;
 	 justify-content: center;
-	 margin-top: 5vh;
+	 margin-top: 3vh;
 	 margin-bottom: 5vh;
 }
  #ridingResults #rightBar #logo * {
@@ -210,12 +210,20 @@ body {
  #ridingResults #rightBar #secondaryPoll {
 	 width: 100%;
 }
- #ridingResults #rightBar #secondaryPoll .reportingPolls {
+ #ridingResults #rightBar #secondaryPoll #reportingPolls {
 	 color: white;
-}
- #ridingResults #rightBar #secondaryPoll .reportingPolls {
 	 font-size: 4vh;
 	 margin-left: 10px;
+}
+ #ridingResults #rightBar #secondaryPoll #ridingName {
+	 width: 100%;
+	 height: 5vh;
+	 background-color: #bfc8d3;
+	 font-size: 3vh;
+	 padding-left: 10px;
+	 padding-top: 3px;
+	 padding-bottom: 7px;
+	 margin-top: 10px;
 }
  #ridingResults #rightBar #secondaryPoll .candidates {
 	 height: 50vh;
