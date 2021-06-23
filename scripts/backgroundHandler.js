@@ -28,6 +28,7 @@ function changeBackground(d)
 	{
 		next++;
 	}
+	
 	/*
 	start -(4s)-> start animation -(1s)-> end animation -(1s)-> new back
 	 ^_____________________________________________________________| 
