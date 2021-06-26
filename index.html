@@ -5,6 +5,9 @@
 	<link rel="stylesheet" type="text/css" href=styles/styles.css>
 </head>
 <body>
+	<div id="setup" class="base">
+		<input id="fileInput" type="file">
+	</div>
 	<div id="ridingResults" class="base">
 		<div id="header" class="content">
 			<div>
@@ -255,8 +258,18 @@
 		<img src="backgrounds\2.jpg" id="currentBackgroundImage" class="base">
 	</div>
 
+	<!-- Dependencies -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="scripts/backgroundHandler.js"></script>
+	
+	<!-- Settings -->
+
+
+	<!-- UI scripts -->
+	<script src="scripts/UI/backgroundHandler.js"></script>
+
+	<!-- Election  -->
+	<script src="scripts/ElectionBehavior/csvParser.js"></script>
+
 
 </body>
 
