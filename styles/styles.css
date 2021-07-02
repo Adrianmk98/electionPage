@@ -15,6 +15,18 @@ body {
  #setup {
 	 z-index: 5;
 	 background-color: white;
+	 display: flex;
+	 flex-direction: column;
+	 flex-flow: center;
+}
+ #setup > * {
+	 width: fit-content;
+	 margin-top: 10px;
+	 align-self: center;
+}
+ #setup div {
+	 display: flex;
+	 flex-flow: center;
 }
  #background div {
 	 background-color: rgba(172, 186, 198, 0.7);
