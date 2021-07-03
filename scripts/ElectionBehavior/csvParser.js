@@ -1,19 +1,22 @@
-function readSingleFile(e) {
-  var file = e.target.files[0];
-  if (!file) {
-    return;
-  }
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var contents = e.target.result;
-    displayContents(contents);
-  };
-  reader.readAsText(file);
-}
+class CSVParser
+{
+    static csvToJson(file, onSuccessListener)
+    {
+        var returnVal = {"success" : true};
+        if(!file)
+        {
+            returnVal.success = false;
+            return returnVal;
+        }
 
-function displayContents(contents) {
-  console.log(contents.split("\n"))
-}
+        var reader = new FileReader();
 
-document.getElementById('fileInput')
-  .addEventListener('change', readSingleFile, false);
+        reader.onload = function(file)
+        {
+            var contents = file.target.result;
+            onSuccessListener(returnVal)
+        }
+
+        reader.readAsText(file)
+    }
+}
