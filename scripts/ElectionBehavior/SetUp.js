@@ -9,19 +9,22 @@ class SetUp
 
 	run()
 	{
+		var returnVal = {"success" : true}
 		if(this.#feildCheck())
 		{
 			console.log("Start")
 			//start
-			return;
+			return returnVal;
 		}
 
 		//fail
-		console.log("Fail")
+		returnVal.success = false;
+		this.#sendMessage("Invalid feild: Make sure that all file feilds are set with a csv file")
 
-		return;
+		return returnVal;
 	}
 
+	//files checks
 	#feildCheck()
 	{
 		return this.#fileCheck(this.partyFeild.files) && this.#fileCheck(this.ridingFeild.files);
@@ -37,6 +40,18 @@ class SetUp
 		name = files[0].name.toLowerCase();
 
 		return name.substr(name.length - 3, 3) == "csv"
+	}
+
+	#sendMessage(messageStr)
+	{
+		this.messageFeild.addClass("alert")
+		this.messageFeild.text(messageStr)
+
+		setTimeout(this.#hideMessage.bind(this), 10*1000)
+	}
+	#hideMessage()
+	{
+		this.messageFeild.removeClass("alert")
 	}
 }
 
