@@ -1,36 +1,41 @@
+
+/**
+ * Class parses a csv file into a 2d array
+ */
 class CSVParser
 {
-    constructor()
-    {
+	/**
+	  * csvToArray converts a file input into 2d array
+	  * 
+	  * @param {Object} file inputed file that will be read and converted
+	  * @param {Listener} listener object that calls onSuccess and onFailure
+	  */
+	static csvToArray(file, listener)
+	{
+		//check if file is null
+		if(!file)
+		{
+			listener.onFailure();
+			return returnVal;
+		}
 
-    }
+		var reader = new FileReader();
 
-    static csvToArray(file, listener)
-    {
-        if(!file)
-        {
-            listener.onFailure();
-            return returnVal;
-        }
+		reader.onload = function(file)
+		{
+			var fileStrRaw = file.target.result;
 
-        var reader = new FileReader();
+			var lines = fileStrRaw.split('\n')
 
-        reader.onload = function(file)
-        {
-            var fileStrRaw = file.target.result;
+			for (var i1 = 0; i1 < lines.length; i1++)
+			{
 
-            var lines = fileStrRaw.split('\n')
+				lines[i1] = lines[i1].split(",");
+			}
 
-            var fileConverted = []
+			listener.onSuccess(lines)
+		}
 
-            for (var i1 = 0; i1 < lines.length; i1++)
-            {
-                fileConverted.push(lines[i1].split("\t"));
-            }
-
-            listener.onSuccess(fileConverted)
-        }
-
-        reader.readAsText(file)
-    }
+		reader.readAsText(file)
+	}
 }
