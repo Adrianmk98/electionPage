@@ -1,3 +1,6 @@
+/**
+ * SetUp class addresses with the functionality in setting up the election page
+ */
 class SetUp
 {
 	partyFeild;
@@ -8,6 +11,9 @@ class SetUp
 
 	messageFeild;
 
+	/**
+	 * constructor assigns values of instances and preps listeners
+	 */
 	constructor()
 	{
 		this.partyFeild = $("input#partySettings")[0]
@@ -48,15 +54,18 @@ class SetUp
 		this.messageFeild = $("#setup > #message")
 	}
 
+	/*
+	 * run method gathers inputed settings into one json object
+	 *
+	 * @return {Object} json object of parties, ridings and success condition of the method
+	 */
 	run()
 	{
-		var returnVal = {"success" : true}
+		var returnVal = {"success" : true, "parties": null, "ridings": null}
 
-		//var parser = new CSVParser();
-
+		//checks if all feilds are set
 		if(this.#feildCheck())
 		{
-			//start
 			returnVal.parties = null;
 			returnVal.ridings = null;
 
@@ -73,7 +82,7 @@ class SetUp
 			)
 
 
-			this.#runCounter(10)
+			this.#startCountDown(10)
 
 			console.log(returnVal)
 			
@@ -88,7 +97,12 @@ class SetUp
 		return returnVal;
 	}
 
-	#runCounter(count)
+	/**
+	 * startCountDown is a recursive method to count down before the election page is actived
+	 *
+	 * @param {Number} count is an int of the number seconds left before the page starts
+	 */
+	#startCountDown(count)
 	{
 		if(count == 5)
 		{
@@ -98,16 +112,28 @@ class SetUp
 		{
 			return ;
 		}
-		this.#sendMessage("Live Stream Starting in : "+count)
-		setTimeout(this.#runCounter.bind(this, count - 1), 1000)
+		this.#sendMessage("Live Stream Starting in : " + count)
+		setTimeout(this.#startCountDown.bind(this, count - 1), 1000)
 	}
 
-	//files checks
+	/**
+	 * feildCheck checks if all settings are set with a valid value
+	 * 
+	 * @return {boolean} boolean whether all feilds are valid
+	 */
 	#feildCheck()
 	{
 		return this.#fileCheck(this.partyFeild.files) && this.#fileCheck(this.ridingFeild.files);
 	}
 
+	/**
+
+	 * fileCheck determines if a file feild is set in a useable manner
+	 *
+	 * @param {Object} files is files instance from file input feild
+	 *
+	 * @return {boolean} boolean if the file is a csv
+	 */
 	#fileCheck(files)
 	{
 		if(files.length != 1)
@@ -120,7 +146,11 @@ class SetUp
 		return name.substr(name.length - 3, 3) == "csv"
 	}
 
-	//message methods
+	/**
+	 * sendMessage updates message box
+	 *
+	 * @param {string} messageStr string value of message that will be displayed
+	 */
 	#sendMessage(messageStr)
 	{
 		this.messageFeild.addClass("alert")
@@ -129,6 +159,9 @@ class SetUp
 		setTimeout(this.#hideMessage.bind(this), 10*1000)
 	}
 
+	/**
+	 * hideMessage hides the message box after being displayed
+	 */
 	#hideMessage()
 	{
 		this.messageFeild.removeClass("alert")
