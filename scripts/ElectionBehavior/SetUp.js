@@ -1,23 +1,82 @@
 class SetUp
 {
 	partyFeild;
+	#partyListener;
+
 	ridingFeild;
+	#ridingListener;
+
 	messageFeild;
-	
+
 	constructor()
 	{
 		this.partyFeild = $("input#partySettings")[0]
+		this.#partyListener = new Listener();
+
+		this.#partyListener.setOnSuccess
+		(
+			function(data)
+			{
+				console.log(data)
+			}
+		).setOnFailure
+		(
+			function()
+			{
+				console.log("Failure")
+			}
+		)
+
+
 		this.ridingFeild = $("input#ridingSettings")[0]
+		this.#ridingListener = new Listener();
+
+		this.#ridingListener.setOnSuccess
+		(
+			function(data)
+			{
+				console.log(data)
+			}
+		).setOnFailure
+		(
+			function()
+			{
+				console.log("Failure")
+			}
+		)
+
 		this.messageFeild = $("#setup > #message")
 	}
 
 	run()
 	{
 		var returnVal = {"success" : true}
+
+		//var parser = new CSVParser();
+
 		if(this.#feildCheck())
 		{
 			//start
+			returnVal.parties = null;
+			returnVal.ridings = null;
+
+			CSVParser.csvToArray
+			(
+				this.partyFeild.files[0],
+				this.#partyListener
+			)
+
+			CSVParser.csvToArray
+			(
+				this.ridingFeild.files[0],
+				this.#ridingListener
+			)
+
+
 			this.#runCounter(10)
+
+			console.log(returnVal)
+			
 			return returnVal;
 		}
 
@@ -25,6 +84,7 @@ class SetUp
 		returnVal.success = false;
 		this.#sendMessage("Invalid feild: Make sure that all file feilds are set with a csv file")
 
+		console.log(returnVal)
 		return returnVal;
 	}
 
