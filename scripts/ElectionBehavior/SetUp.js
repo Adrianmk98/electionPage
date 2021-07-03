@@ -1,5 +1,9 @@
 class SetUp
 {
+	partyFeild;
+	ridingFeild;
+	messageFeild;
+	
 	constructor()
 	{
 		this.partyFeild = $("input#partySettings")[0]
@@ -12,8 +16,8 @@ class SetUp
 		var returnVal = {"success" : true}
 		if(this.#feildCheck())
 		{
-			console.log("Start")
 			//start
+			this.#runCounter(10)
 			return returnVal;
 		}
 
@@ -22,6 +26,20 @@ class SetUp
 		this.#sendMessage("Invalid feild: Make sure that all file feilds are set with a csv file")
 
 		return returnVal;
+	}
+
+	#runCounter(count)
+	{
+		if(count == 5)
+		{
+			$("#setup").css("display","none")
+		}
+		else if(count == 0)
+		{
+			return ;
+		}
+		this.#sendMessage("Live Stream Starting in : "+count)
+		setTimeout(this.#runCounter.bind(this, count - 1), 1000)
 	}
 
 	//files checks
@@ -42,6 +60,7 @@ class SetUp
 		return name.substr(name.length - 3, 3) == "csv"
 	}
 
+	//message methods
 	#sendMessage(messageStr)
 	{
 		this.messageFeild.addClass("alert")
@@ -49,6 +68,7 @@ class SetUp
 
 		setTimeout(this.#hideMessage.bind(this), 10*1000)
 	}
+
 	#hideMessage()
 	{
 		this.messageFeild.removeClass("alert")
