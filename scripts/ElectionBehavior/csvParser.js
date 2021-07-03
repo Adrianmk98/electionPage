@@ -1,11 +1,15 @@
 class CSVParser
 {
-    static csvToJson(file, onSuccessListener)
+    constructor()
     {
-        var returnVal = {"success" : true};
+
+    }
+
+    static csvToArray(file, listener)
+    {
         if(!file)
         {
-            returnVal.success = false;
+            listener.onFailure();
             return returnVal;
         }
 
@@ -13,8 +17,18 @@ class CSVParser
 
         reader.onload = function(file)
         {
-            var contents = file.target.result;
-            onSuccessListener(returnVal)
+            var fileStrRaw = file.target.result;
+
+            var lines = fileStrRaw.split('\n')
+
+            var fileConverted = []
+
+            for (var i1 = 0; i1 < lines.length; i1++)
+            {
+                fileConverted.push(lines[i1].split("\t"));
+            }
+
+            listener.onSuccess(fileConverted)
         }
 
         reader.readAsText(file)
