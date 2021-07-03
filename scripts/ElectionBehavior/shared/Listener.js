@@ -3,10 +3,13 @@ class Listener
 	#successAction;
 	#failureAction;
 
-	constructor()
-	{
-	}
-
+	/**
+	 * setOnSuccess sets successAction
+	 * 
+	 * @param {function} action funtion that runs on onSuccess
+	 *
+	 * @return {Listener} Listener object that just used this method
+	 */
 	setOnSuccess(action)
 	{
 		this.#successAction = action;
@@ -14,6 +17,13 @@ class Listener
 		return this;
 	}
 
+	/**
+	 * setOnFailure sets successAction
+	 * 
+	 * @param {function} action funtion that runs on onFailure
+	 *
+	 * @return {Listener} Listener object that just used this method
+	 */
 	setOnFailure(action)
 	{
 		this.#failureAction = action;
@@ -21,6 +31,13 @@ class Listener
 		return this;
 	}
 
+	/**
+	 * onSuccess runs successAction
+	 *
+	 * @param {JSon object} data is paramater used in successAction function 
+	 *
+	 * @return {Listener} Listener object that just used this method
+	 */
 	onSuccess(data)
 	{
 		this.#successAction(data);
@@ -28,6 +45,12 @@ class Listener
 		return this
 	}
 
+
+	/**
+	 * onFailure runs failureAction
+	 *
+	 * @return {Listener} Listener object that just used this method
+	 */
 	onFailure()
 	{
 		this.#failureAction();
