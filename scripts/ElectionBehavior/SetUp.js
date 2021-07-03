@@ -56,3 +56,5 @@ class SetUp
 }
 
 a = new SetUp();
+
+$("button").click(a.run.bind(a))
