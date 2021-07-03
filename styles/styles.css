@@ -24,9 +24,42 @@ body {
 	 margin-top: 10px;
 	 align-self: center;
 }
+ @keyframes errorAnimation {
+	 0% {
+		 opacity: 1;
+		 background-color: red;
+	}
+	 1% {
+		 transform: translate(20px, 0px);
+	}
+	 2% {
+		 transform: translate(-20px, 0px);
+	}
+	 3% {
+		 transform: translate(20px, 0px);
+	}
+	 4% {
+		 transform: translate(-10px, 0px);
+	}
+	 5% {
+		 transform: translate(0px, 0px);
+	}
+	 96.6666666667% {
+		 opacity: 1;
+	}
+	 100% {
+		 opacity: 0;
+	}
+}
  #setup div {
 	 display: flex;
 	 flex-flow: center;
+}
+ #setup #message {
+	 opacity: 0;
+	 animation-name: errorAnimation;
+	 animation-duration: 10s;
+	 animation-play-state: paused;
 }
  #background div {
 	 background-color: rgba(172, 186, 198, 0.7);

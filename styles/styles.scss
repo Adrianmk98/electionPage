@@ -38,10 +38,67 @@ body
 		align-self: center;
 	}
 
+	
+	$timeInterval: 0.3;
+	$totalTime: 10;
+	$fadeOutTime: 1;
+    
+	@keyframes errorAnimation {
+		$timeInterval: 0.3;
+		$totalTime: 30;
+		$fadeOutTime: 1;
+		0% 
+		{
+			opacity: 1;
+			background-color: red;
+		}
+		@for $i from 1 through 3
+		{
+			#{$timeInterval / $totalTime * $i * 100%}
+			{
+				@if $i%2 == 0
+				{
+					transform: translate(-20px, 0px);
+				}
+				@else
+				{
+					transform: translate(20px, 0px);
+				}
+				
+			}
+		}
+		#{$timeInterval / $totalTime * 4 * 100%}
+		{
+			transform: translate(-10px, 0px);
+		}
+		#{$timeInterval / $totalTime * 5 * 100%}
+		{
+			transform: translate(0px, 0px);
+		}
+
+		#{($totalTime - $fadeOutTime)/$totalTime * 100%}
+		{
+			opacity: 1;
+		}
+		100%
+		{
+			opacity: 0;
+		}
+	}
+
 	div
 	{
 		display: flex;
 		flex-flow: center;
+	}
+
+	#message
+	{
+		opacity: 0;
+
+		animation-name: errorAnimation;
+		animation-duration: $totalTime * 1s;
+		animation-play-state: paused;
 	}
 
 }
