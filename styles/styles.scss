@@ -50,7 +50,6 @@ body
 		0% 
 		{
 			opacity: 1;
-			background-color: red;
 		}
 		@for $i from 1 through 3
 		{
@@ -95,10 +94,12 @@ body
 	#message
 	{
 		opacity: 0;
+	}
+	.alert
+	{
 
-		animation-name: errorAnimation;
-		animation-duration: $totalTime * 1s;
-		animation-play-state: paused;
+		animation: errorAnimation $totalTime * 1s 1;
+		//animation-play-state: paused;
 	}
 
 }

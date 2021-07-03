@@ -27,7 +27,6 @@ body {
  @keyframes errorAnimation {
 	 0% {
 		 opacity: 1;
-		 background-color: red;
 	}
 	 1% {
 		 transform: translate(20px, 0px);
@@ -57,9 +56,9 @@ body {
 }
  #setup #message {
 	 opacity: 0;
-	 animation-name: errorAnimation;
-	 animation-duration: 10s;
-	 animation-play-state: paused;
+}
+ #setup .alert {
+	 animation: errorAnimation 10s 1;
 }
  #background div {
 	 background-color: rgba(172, 186, 198, 0.7);
