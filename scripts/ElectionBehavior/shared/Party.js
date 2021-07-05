@@ -104,9 +104,20 @@ class Party
 	}
 
 	/**
+	 * returns the string for key
+	 *
+	 * @return {String} key value
+	 */
+	getKey()
+	{
+		return this.#key;
+	}
+
+	/**
 	 * updateElements updates the colour format of all html elements with key id
 	 */
 	updateElements()
 	{
+		
 	}
 }
