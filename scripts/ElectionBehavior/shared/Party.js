@@ -27,7 +27,7 @@ class Party
 		{
 			this.#constructor1(arguments[0]);
 		}
-		else if(arguments.length === 3)
+		else if(arguments.length === 4)
 		{
 			this.#constructor2(arguments[0], arguments[1], arguments[2], arguments[3])
 		}
@@ -51,7 +51,7 @@ class Party
 			throw "IlligalArguments";
 		}
 
-		#constructor2(line[3], line[2], line[1], line[0])
+		this.#constructor2(line[3], line[2], line[1], line[0])
 	}
 
 	/**
@@ -118,7 +118,7 @@ class Party
 	 */
 	updateElements()
 	{
-		$("#" + this.key + " .partyColourBorder").css("border-color", this.colour)
-		$("#" + this.key + " .partyColour").css("background-color", this.colour)
+		$("#" + this.#key + " .partyColourBorder, "+"#" + this.#key + ".partyColourBorder").css("border-color", this.#colour)
+		$("#" + this.#key + " .partyColour, "+ "#" + this.#key + ".partyColour").css("background-color", this.#colour)
 	}
 }
