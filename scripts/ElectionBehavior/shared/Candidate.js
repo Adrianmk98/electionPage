@@ -137,4 +137,124 @@ class Candidate
 			}
 		}	
 	}
+
+	/**
+	 * getParty returns the value of the partyId
+	 *
+	 * @return {String} partyId
+	 */
+	getParty()
+	{
+		return this.#partyId
+	}
+
+	/**
+	 * getName returns the value of the candidate name
+	 *
+	 * @return {String} name of the candidate
+	 */
+	getName()
+	{
+		return this.#name
+	}
+
+	/**
+	 * getFaceSteal returns the value of the candidate faceSteal file name
+	 *
+	 * @return {String} file name of faceSteal of candidate
+	 */
+	getFaceSteal()
+	{
+		return this.#faceSteal;
+	}
+
+	/**
+	 * getVoteCount returns the vote count
+	 *
+	 * @param {float} arguments[0] time value that is between two steps
+	 *
+	 * @param {integer} arguments[0] step value at given point
+	 *
+	 * @return {String} file name of faceSteal of candidate
+	 *
+	 * @throw {IlligalArguments} throws when the wrong number of arguments are given or arguments are not numbers
+	 */
+	getVoteCount()
+	{
+		if (arguments.length === 0)
+		{
+			return this.#getVoteCount1()
+		}
+		else if(arguments.length === 1)
+		{
+			if(!isNaN(arguments[0]) && typeof arguments[0] === "number")
+			{
+				if(arguments[0].toString().indexOf('.') != -1)
+				{
+					return this.#getVoteCount2(arguments[0])
+				}
+				else if(arguments[0].toString().indexOf('.') == -1)
+				{
+					return this.#getVoteCount3(arguments[0])
+				}	
+			}
+		}
+
+		throw "IlligalArguments"
+
+	}
+
+	/**
+	 * getVoteCount1 returns the vote count array
+	 *
+	 * @return {Array} voteCount array
+	 */
+	#getVoteCount1()
+	{
+		return this.#voteCount;
+	}
+
+	/**
+	 * #getVoteCount2 returns the interpolated voteCount between two voteSteps
+	 *
+	 * @param {float} time value of the interpolated values
+	 *
+	 * @return {int} vote count 
+	 *
+	 * @throws {outOfRangeError} throws when time paramater is greater than the voteCount array or less than 0
+	 *
+	 * @throws {outOfRangeError} throws when time paramater is greater than the voteCount array or less than 0
+	 */
+	#getVoteCount2(time)
+	{
+		var y1 = Math.floor(time)
+		var y2 = Math.ceil(time)
+		var x = time % 1;
+
+		if(y1 < 0 || this.#voteCount.length <= y2)
+		{
+			throw "outOfRangeError"
+		}
+
+		return Math.round(this.#voteCount[y1] + x * (this.#voteCount[y2] - this.#voteCount[y1]))
+	}
+
+	/**
+	 * #getVoteCount3 returns the vote count at a given step
+	 *
+	 * @param {float} time value of the interpolated values
+	 *
+	 * @return {int} vote count 
+	 */
+	#getVoteCount3(time)
+	{
+		if(time < 0 || this.#voteCount.length <= time)
+		{
+			throw "outOfRangeError"
+		}
+
+		return this.#voteCount[time]
+	}
+
+
 }
