@@ -42,16 +42,16 @@ class Party
 	 *
 	 * @param {Array} line array storing colour, name and abrv
 	 *
-	 * @throw {IlligalArguments} line is not an array
+	 * @throw {IlligalArguments} throws when line is not an array
 	 */
 	#constructor1(line)
 	{
-		throw "NotImplementedException";
-
 		if(!Array.isArray(line))
 		{
 			throw "IlligalArguments";
 		}
+
+		#constructor2(line[3], line[2], line[1], line[0])
 	}
 
 	/**
@@ -61,10 +61,46 @@ class Party
 	 * @param {string} name long name of party
 	 * @param {string} abrv abbreviation of party
 	 * @param {String} key party key
+	 *
+	 * @throw {IlligalArguments} throws when paramaters are not strings
 	 */
 	#constructor2(colour, name, abrv, key)
 	{
-		throw "NotImplementedException";
+		if(typeof colour === 'string')
+		{
+			this.#colour = colour
+		}
+		else
+		{
+			throw "IlligalArguments"
+		}
+
+		if(typeof name === "string")
+		{
+			this.#name = name;
+		}
+		else
+		{
+			throw "IlligalArguments"
+		}
+
+		if(typeof abrv === "string")
+		{
+			this.#abrv = abrv;
+		}
+		else
+		{
+			throw "IlligalArguments"
+		}
+
+		if(typeof key === "string")
+		{
+			this.#key = key;
+		}
+		else
+		{
+			throw "IlligalArguments"
+		}
 	}
 
 	/**
