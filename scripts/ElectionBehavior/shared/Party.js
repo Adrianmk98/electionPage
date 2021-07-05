@@ -118,6 +118,7 @@ class Party
 	 */
 	updateElements()
 	{
-		
+		$("#" + this.key + " .partyColourBorder").css("border-color", this.colour)
+		$("#" + this.key + " .partyColour").css("background-color", this.colour)
 	}
 }
