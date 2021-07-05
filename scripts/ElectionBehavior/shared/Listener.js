@@ -1,3 +1,6 @@
+/**
+ * Listener stores functions that are called when certian conditions are met
+ */
 class Listener
 {
 	#successAction;
