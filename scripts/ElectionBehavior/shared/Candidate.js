@@ -11,7 +11,7 @@ class Candidate
 	/**
 	 * constructor assigns and validates new candidate values
 	 *
-	 * @param {Array} arguments[0] array of all values with riding.csv
+	 * @param {Array} arguments[0] array of all values within riding.csv
 	 *
 	 * @param {string} arguments[0] the party Id that the candidate belongs to
 	 * @param {string} arguments[1] the name of the candidate
