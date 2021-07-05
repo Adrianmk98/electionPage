@@ -6,7 +6,7 @@ class Candidate
 	#partyId;
 	#name;
 	#faceSteal;
-	#pollCount = [];
+	#voteCount = [];
 
 	/**
 	 * constructor assigns and validates new candidate values
@@ -76,7 +76,7 @@ class Candidate
 		{
 			if(/^\d+$/.test(line[i1]))
 			{
-				this.#pollCount.push(parseInt(line[i1]))
+				this.#voteCount.push(parseInt(line[i1]))
 			}
 			else
 			{
@@ -91,12 +91,12 @@ class Candidate
 	 * @param {string} partyId the party Id that the candidate belongs to
 	 * @param {string} name the name of the candidate
 	 * @param {string} faceSteal the image name of the candidates facesteal
-	 * @param {Array} pollCount Array of votes received
+	 * @param {Array} voteCount Array of votes received
 	 *
 	 * @param {IlligalArguments} throws if the wrong data type is inserted
 	 */
 
-	#constructor2(partyId, name, faceSteal, pollCount)
+	#constructor2(partyId, name, faceSteal, voteCount)
 	{
 		if(typeof partyId === "string")
 		{
@@ -125,11 +125,11 @@ class Candidate
 			throw "IlligalArguments"
 		}
 		
-		for(var i1 = 3; i1 < pollCount.length; i1++)
+		for(var i1 = 3; i1 < voteCount.length; i1++)
 		{
-			if(/^\d+$/.test(pollCount[i1]))
+			if(/^\d+$/.test(voteCount[i1]))
 			{
-				this.#pollCount.push(parseInt(pollCount[i1]))
+				this.#voteCount.push(parseInt(voteCount[i1]))
 			}
 			else
 			{
