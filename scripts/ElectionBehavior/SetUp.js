@@ -22,8 +22,7 @@ class SetUp
 	 */
 	constructor()
 	{
-		this.iterator = this.#run()
-		SetUp.#iteratorPointer = this.iterator
+		this.#intiateIterator()
 
 		this.partyFeild = $("input#partySettings")[0]
 		this.#partyListener = new Listener();
@@ -106,10 +105,7 @@ class SetUp
 	 */
 	* #run()
 	{
-		var returnVal = {"success" : true}
-
-		//checks if all feilds are set
-		if(this.#feildCheck())
+		try
 		{
 			CSVParser.csvToArray
 			(
@@ -132,13 +128,12 @@ class SetUp
 			
 			return returnVal;
 		}
-
-		//fail
-		returnVal.success = false;
-		this.#sendMessage("Invalid feild: Make sure that all file feilds are set with a csv file")
-
-		console.log(returnVal)
-		return returnVal;
+		catch(exception)
+		{
+			console.log(exception)
+			this.#sendMessage(exception.toString())
+			this.#intiateIterator()
+		}
 	}
 
 	/**
@@ -211,8 +206,42 @@ class SetUp
 	{
 		this.messageFeild.removeClass("alert")
 	}
+
+	/**
+	 * calcTime converts a number and unit into ns
+	 *
+	 * @param {integer} time is a time value
+	 * @param {stirng} unit is the unit of time
+	 *
+	 * @throws {IlligalArguments} if paramaters are not in the proper data type
+	 */
+	#calcTime(time, unit)
+	{
+		if(!(/^\d+$/.test(time)))
+		{
+			throw new Exception("IlligalArguments", "time must be int")
+		}
+		switch(unit)
+		{
+			case "sec":
+				return time * 1000
+			case "min":
+				return time * 60 * 1000
+			default:
+				throw new Exception("IlligalArguments", "Invalid unit. unit must be 'sec' or 'min'")
+		}
+	}
+
+	/**
+	 * intiateIterator sets up iterator generator
+	 */
+	#intiateIterator()
+	{
+		this.iterator = this.#run()
+		SetUp.#iteratorPointer = this.iterator
+		$("button").click(this.iterator.next.bind(this.iterator))
+
+	}
 }
 
 a = new SetUp();
-
-$("button").click(a.iterator.next.bind(a.iterator))
