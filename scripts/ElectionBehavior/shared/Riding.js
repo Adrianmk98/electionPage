@@ -48,7 +48,7 @@ class Riding
 	 */
 	#constructor1(line)
 	{
-		if(line.length != 4)
+		if(line.length < 4)
 		{
 			throw "IlligalArguments"
 		}
@@ -148,7 +148,7 @@ class Riding
 		{
 			var tmp = new Candidate(candidate)
 
-			this.#candidates.push(candidate)
+			this.#candidates.push(tmp)
 		}
 	}
 
