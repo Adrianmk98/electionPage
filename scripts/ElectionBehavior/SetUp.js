@@ -14,11 +14,17 @@ class SetUp
 	primaryTimeFeild = {val:null, unit:null}
 	secondaryTimeFeild = {val:null, unit:null}
 
+	iterator;
+	static #iteratorTmp;
+
 	/**
 	 * constructor assigns values of instances and preps listeners
 	 */
 	constructor()
 	{
+		this.iterator = this.#run()
+		SetUp.#iteratorTmp = this.iterator
+
 		this.partyFeild = $("input#partySettings")[0]
 		this.#partyListener = new Listener();
 
@@ -37,6 +43,7 @@ class SetUp
 					Main.addParties(new Party(data[i1]))
 				}
 				console.log(Main.parties)
+				console.log(SetUp.#iteratorTmp.next())
 			}
 		).setOnFailure
 		(
@@ -79,6 +86,7 @@ class SetUp
 					//Main.ridings.push(new Riding(data[i1]))
 				}
 				console.log(Main.ridings)
+				console.log(SetUp.#iteratorTmp.next())
 			}
 		).setOnFailure
 		(
@@ -96,27 +104,26 @@ class SetUp
 	 *
 	 * @return {Object} json object of parties, ridings and success condition of the method
 	 */
-	run()
+	* #run()
 	{
-		var returnVal = {"success" : true, "parties": null, "ridings": null}
+		var returnVal = {"success" : true}
 
 		//checks if all feilds are set
 		if(this.#feildCheck())
 		{
-			returnVal.parties = null;
-			returnVal.ridings = null;
-
 			CSVParser.csvToArray
 			(
 				this.partyFeild.files[0],
 				this.#partyListener
 			)
-
+			yield
+			
 			CSVParser.csvToArray
 			(
 				this.ridingFeild.files[0],
 				this.#ridingListener
 			)
+			yield
 
 
 			this.#startCountDown(10)
@@ -208,4 +215,4 @@ class SetUp
 
 a = new SetUp();
 
-$("button").click(a.run.bind(a))
+$("button").click(a.iterator.next.bind(a.iterator))
