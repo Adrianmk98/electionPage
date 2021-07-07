@@ -15,9 +15,16 @@ class CSVParser
 		//check if file is null
 		if(!file)
 		{
-			listener.onFailure();
-			return returnVal;
+			listener.onFailure()
+			throw new Exception("IlligalArguments","file must be set")
 		}
+
+		if(!this.#csvCheck(file))
+		{
+			listener.onFailure();
+			throw new Exception("IlligalArguments","file must be csv")
+		}
+		
 
 		var reader = new FileReader();
 
@@ -44,5 +51,12 @@ class CSVParser
 		}
 
 		reader.readAsText(file)
+	}
+
+	static #csvCheck(file)
+	{
+		name = file.name.toLowerCase();
+
+		return name.substr(name.length - 3, 3) == "csv"
 	}
 }
