@@ -3,9 +3,59 @@ class Main
 	static parties = []
 	static ridings = []
 
-	static active = true;
 	static primaryDuration;
 	static secondaryDuration;
+
+	static #active = true;
+	static #time = 0;
+
+	/**
+	 * start methods intiates the election livestream
+	 */
+	static start()
+	{
+		console.log("started")
+		Main.#active = true;
+		Main.#update()
+	}
+
+	/**
+	 * togglePause plays/pauses the livestream based on whether livestream is active
+	 */
+	static togglePause()
+	{
+		Main.#active = Main.#active === true
+	}
+
+	/**
+	 * play plays the livestream
+	 */
+	static play()
+	{
+		Main.#active = true
+	}
+
+	/**
+	 * pause pauses the livestream
+	 */
+	static pause()
+	{
+		Main.#active = false;
+	}
+
+	/**
+	 * update method handles the updating of riding veiws
+	 */
+	static #update()
+	{
+		if(Main.#active)
+		{
+			console.log(Main.#time)
+			Main.#time++;
+		}
+
+		setTimeout(Main.#update, 1000)
+	}
 
 	/**
 	 * addParties appends a new party into parties array
