@@ -14,7 +14,7 @@ class Main
 	 *
 	 * @throw {IlligalArguments} throws when paramaters are not party
 	 */
-	addParties(party)
+	static addParties(party)
 	{
 		if(typeof party === "object" && party.constructor.name === Party.name)
 		{
@@ -33,7 +33,7 @@ class Main
 	 *
 	 * @throw {IlligalArguments} throws when paramaters are not riding
 	 */
-	addRiding(riding)
+	static addRiding(riding)
 	{
 		if(typeof riding === "object" && riding.constructor.name === Riding.name)
 		{
@@ -52,7 +52,7 @@ class Main
 	 *
 	 * @throw {IlligalArguments} throws when paramaters are not int
 	 */
-	setPrimaryDuration(duration)
+	static setPrimaryDuration(duration)
 	{
 		if(/^\d+$/.test(duration))
 		{
@@ -71,7 +71,7 @@ class Main
 	 *
 	 * @throw {IlligalArguments} throws when paramaters are not int
 	 */
-	setSecondaryDuration(duration)
+	static setSecondaryDuration(duration)
 	{
 		if(/^\d+$/.test(duration))
 		{
@@ -82,6 +82,4 @@ class Main
 			throw "IlligalArguments"
 		}
 	}
-
-
 }
