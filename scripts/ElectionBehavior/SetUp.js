@@ -121,6 +121,8 @@ class SetUp
 			)
 			yield
 
+			Main.setPrimaryDuration(this.#calcTime(this.primaryTimeFeild.val.val(),this.primaryTimeFeild.unit.val()))
+			Main.setSecondaryDuration(this.#calcTime(this.secondaryTimeFeild.val.val(),this.secondaryTimeFeild.unit.val()))
 
 			this.#startCountDown(10)
 
@@ -208,7 +210,7 @@ class SetUp
 	}
 
 	/**
-	 * calcTime converts a number and unit into ns
+	 * calcTime converts a number and unit into sec
 	 *
 	 * @param {integer} time is a time value
 	 * @param {stirng} unit is the unit of time
@@ -224,9 +226,9 @@ class SetUp
 		switch(unit)
 		{
 			case "sec":
-				return time * 1000
+				return time
 			case "min":
-				return time * 60 * 1000
+				return time * 60
 			default:
 				throw new Exception("IlligalArguments", "Invalid unit. unit must be 'sec' or 'min'")
 		}
