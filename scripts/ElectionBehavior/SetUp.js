@@ -34,7 +34,7 @@ class SetUp
 			{
 				for(var i1 = 0; i1 < data.length - 1; i1++)
 				{
-					Main.parties.push(new Party(data[i1]))
+					Main.addParties(new Party(data[i1]))
 				}
 				console.log(Main.parties)
 			}
@@ -68,7 +68,7 @@ class SetUp
 						{
 							console.log("New Riding")
 							console.log(data[i1])
-							Main.ridings.push(new Riding(data[i1]))
+							Main.addRiding(new Riding(data[i1]))
 						}
 					}
 					catch(ex)
@@ -147,7 +147,7 @@ class SetUp
 		}
 		else if(count == 0)
 		{
-			Main.Main()
+			//Main.Main()
 			return ;
 		}
 		this.#sendMessage("Live Stream Starting in : " + count)
