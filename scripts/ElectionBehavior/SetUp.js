@@ -11,6 +11,9 @@ class SetUp
 
 	messageFeild;
 
+	primaryTimeFeild = {val:null, unit:null}
+	secondaryTimeFeild = {val:null, unit:null}
+
 	/**
 	 * constructor assigns values of instances and preps listeners
 	 */
@@ -19,11 +22,21 @@ class SetUp
 		this.partyFeild = $("input#partySettings")[0]
 		this.#partyListener = new Listener();
 
+		this.primaryTimeFeild.val = $("input#primary")
+		this.primaryTimeFeild.unit = $("select#primary")
+
+		this.secondaryTimeFeild.val = $("input#secondary")
+		this.secondaryTimeFeild.unit = $("select#secondary")
+
 		this.#partyListener.setOnSuccess
 		(
 			function(data)
 			{
-				console.log(data)
+				for(var i1 = 0; i1 < data.length - 1; i1++)
+				{
+					Main.parties.push(new Party(data[i1]))
+				}
+				console.log(Main.parties)
 			}
 		).setOnFailure
 		(
@@ -41,7 +54,31 @@ class SetUp
 		(
 			function(data)
 			{
-				console.log(data)
+				for(var i1 = 0; i1 < data.length - 1; i1++)
+				{
+					try
+					{
+						if(isNaN(parseFloat(data[i1][0])))
+						{
+							console.log("New Canadidate")
+							console.log(data[i1])
+							Main.ridings[Main.ridings.length - 1].addCandidate(data[i1])
+						}
+						else
+						{
+							console.log("New Riding")
+							console.log(data[i1])
+							Main.ridings.push(new Riding(data[i1]))
+						}
+					}
+					catch(ex)
+					{
+						console.log(ex)
+					}
+					
+					//Main.ridings.push(new Riding(data[i1]))
+				}
+				console.log(Main.ridings)
 			}
 		).setOnFailure
 		(
@@ -110,6 +147,7 @@ class SetUp
 		}
 		else if(count == 0)
 		{
+			Main.Main()
 			return ;
 		}
 		this.#sendMessage("Live Stream Starting in : " + count)
