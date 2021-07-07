@@ -80,7 +80,7 @@ class Candidate
 			}
 			else
 			{
-				throw "IlligalArguments"
+				break;
 			}
 		}
 	}
