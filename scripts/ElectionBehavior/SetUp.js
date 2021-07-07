@@ -15,7 +15,7 @@ class SetUp
 	secondaryTimeFeild = {val:null, unit:null}
 
 	iterator;
-	static #iteratorTmp;
+	static #iteratorPointer;
 
 	/**
 	 * constructor assigns values of instances and preps listeners
@@ -23,7 +23,7 @@ class SetUp
 	constructor()
 	{
 		this.iterator = this.#run()
-		SetUp.#iteratorTmp = this.iterator
+		SetUp.#iteratorPointer = this.iterator
 
 		this.partyFeild = $("input#partySettings")[0]
 		this.#partyListener = new Listener();
@@ -43,7 +43,7 @@ class SetUp
 					Main.addParties(new Party(data[i1]))
 				}
 				console.log(Main.parties)
-				console.log(SetUp.#iteratorTmp.next())
+				console.log(SetUp.#iteratorPointer.next())
 			}
 		).setOnFailure
 		(
@@ -86,7 +86,7 @@ class SetUp
 					//Main.ridings.push(new Riding(data[i1]))
 				}
 				console.log(Main.ridings)
-				console.log(SetUp.#iteratorTmp.next())
+				console.log(SetUp.#iteratorPointer.next())
 			}
 		).setOnFailure
 		(
@@ -117,7 +117,7 @@ class SetUp
 				this.#partyListener
 			)
 			yield
-			
+
 			CSVParser.csvToArray
 			(
 				this.ridingFeild.files[0],
@@ -154,7 +154,7 @@ class SetUp
 		}
 		else if(count == 0)
 		{
-			//Main.Main()
+			Main.start()
 			return ;
 		}
 		this.#sendMessage("Live Stream Starting in : " + count)
