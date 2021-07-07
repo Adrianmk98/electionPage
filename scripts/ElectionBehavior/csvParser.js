@@ -21,16 +21,23 @@ class CSVParser
 
 		var reader = new FileReader();
 
+		var separator = ","
+
 		reader.onload = function(file)
 		{
 			var fileStrRaw = file.target.result;
 
 			var lines = fileStrRaw.split('\n')
 
+			if (lines[0].split(",").length < lines[0].split("\t").length)
+			{
+				separator = "\t"
+			}
+
 			for (var i1 = 0; i1 < lines.length; i1++)
 			{
-
-				lines[i1] = lines[i1].split(",");
+				lines[i1] = lines[i1].replace("\r","")
+				lines[i1] = lines[i1].split(separator);
 			}
 
 			listener.onSuccess(lines)
