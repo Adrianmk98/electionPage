@@ -3,8 +3,8 @@ class Main
 	static parties = []
 	static ridings = []
 
-	static primaryDuration;
-	static secondaryDuration;
+	static #primaryDuration = 0;
+	static #secondaryDuration = 0;
 
 	static #active = true;
 	static #time = 0;
@@ -50,7 +50,17 @@ class Main
 	{
 		if(Main.#active)
 		{
-			console.log(Main.#time)
+
+			if(Main.#time % Main.#primaryDuration === 0)
+			{
+				console.log("UPDATE MAIN")
+			}
+
+			if(Main.#time % Main.#secondaryDuration === 0)
+			{
+				console.log("UPDATE Secondary")
+			}
+
 			Main.#time++;
 		}
 
@@ -106,7 +116,7 @@ class Main
 	{
 		if(/^\d+$/.test(duration))
 		{
-			Main.primaryDuration = duration
+			Main.#primaryDuration = duration
 		}
 		else
 		{
@@ -125,7 +135,7 @@ class Main
 	{
 		if(/^\d+$/.test(duration))
 		{
-			Main.secondaryDuration = duration
+			Main.#secondaryDuration = duration
 		}
 		else
 		{
