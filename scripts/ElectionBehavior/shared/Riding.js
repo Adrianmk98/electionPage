@@ -3,9 +3,12 @@
  */
 class Riding
 {
+	#endTimeBuffer = 5
+
 	#name;
 	#population;
 	#startTime;
+	#endTime = 0;
 	#deltaTime;
 	
 	#candidates = []
@@ -55,7 +58,7 @@ class Riding
 
 		if(!isNaN(parseFloat(line[0])))
 		{
-			this.#startTime = line[0]
+			this.#startTime = parseFloat(line[0])
 		}
 		else
 		{
@@ -64,7 +67,7 @@ class Riding
 
 		if(!isNaN(parseFloat(line[1])))
 		{
-			this.#deltaTime = line[1]
+			this.#deltaTime = parseFloat(line[1])
 		}
 		else
 		{
@@ -116,6 +119,8 @@ class Riding
 		if(!isNaN(startTime) && typeof startTime === "number")
 		{
 			this.#startTime = startTime;
+			console.log(this.#startTime)
+			console.log(startTime)
 		}
 		else
 		{
@@ -150,6 +155,17 @@ class Riding
 
 			this.#candidates.push(tmp)
 		}
+		else
+		{
+			throw new Exception("IlligalArguments", "candidate must be an array or canadidate object")
+		}
+
+		var maxTime = (this.#candidates[this.#candidates.length - 1] - 1) * this.#deltaTime
+
+		if(maxTime > this.#endTime)
+		{
+			this.#endTime = maxTime
+		}
 	}
 
 	/**
@@ -173,7 +189,7 @@ class Riding
 	}
 	
 	/**
-	 * getStartTime returns the start time in minutes since the begining of the liveStream
+	 * getStartTime returns the start time in seconds since the begining of the liveStream
 	 *
 	 * @return {float} the counting start time of the riding
 	 */
@@ -203,16 +219,34 @@ class Riding
 		var candidateVote = []
 		for(var i1 = 0; i1 < this.#candidates; i1++)
 		{
-			candidateVote.push({votes: this.#candidates[i1].getVoteCount(time), candiate : this.#candidates[i1]})
+			this.#candidates[i1].getVoteCount(time)
+			candidateVote.push(this.#candidates[i1])
 		}
 
 		candidateVote.sort((a, b) => 
 		{
-			return a.votes + a.votes;
+			return a.votes - b.votes;
 		});
 
 		candidateVote.reverse()
 		return candidateVote
+	}
+	
+	/**
+	 * countingCheck checks if the riding is still counting
+	 *
+	 * @param {float} time is the current time stamp
+	 *
+	 * @return {boolean} a boolean if the riding is still counting
+	 */
+	countingCheck(time)
+	{
+		if(isNaN(parseFloat(time.toString())))
+		{
+			throw new Exception("IlligalArguments", "time must be float")
+		}
+
+		return time > this.#endTime + this.#startTime
 	}
 
 }
