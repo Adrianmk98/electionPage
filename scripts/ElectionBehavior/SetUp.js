@@ -66,14 +66,10 @@ class SetUp
 					{
 						if(isNaN(parseFloat(data[i1][0])))
 						{
-							console.log("New Canadidate")
-							console.log(data[i1])
-							Main.ridings[Main.ridings.length - 1].addCandidate(data[i1])
+							Main.getRiding(Main.ridingCount() - 1).addCandidate(data[i1])
 						}
 						else
 						{
-							console.log("New Riding")
-							console.log(data[i1])
 							Main.addRiding(new Riding(data[i1]))
 						}
 					}
