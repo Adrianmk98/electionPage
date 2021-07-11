@@ -1,10 +1,13 @@
 class Main
 {
-	static parties = []
-	static ridings = []
+	static #parties = []
+	static #ridings = []
 
 	static #primaryDuration = 0;
 	static #secondaryDuration = 0;
+
+	static #primaryRidingPool;
+	static #secondaryRidingPool;
 
 	static #active = true;
 	static #time = 0;
@@ -15,8 +18,45 @@ class Main
 	static start()
 	{
 		console.log("started")
+
+		Main.#primaryRidingPool = new RidingPools(5, Main.#ridings)
+		Main.#secondaryRidingPool = new RidingPools(NaN, Main.#ridings)
+
 		Main.#active = true;
+		
+		Main.#primaryRidingPool.updatePool(Main.#time)
+		Main.#secondaryRidingPool.updatePool(Main.#time)
+
+
 		Main.#update()
+	}
+
+	/**
+	 * update method handles the updating of riding veiws
+	 */
+	static #update()
+	{
+		if(Main.#active)
+		{
+		Main.#primaryRidingPool.updatePool(Main.#time)
+		Main.#secondaryRidingPool.updatePool(Main.#time)
+
+			if(Main.#time % Main.#primaryDuration === 0)
+			{
+				console.log("UPDATE MAIN")
+				console.log(Main.#primaryRidingPool)
+			}
+
+			if(Main.#time % Main.#secondaryDuration === 0)
+			{
+				console.log("UPDATE Secondary")
+				console.log(Main.#secondaryRidingPool)
+			}
+
+			Main.#time++;
+		}
+
+		setTimeout(Main.#update, 1000)
 	}
 
 	/**
@@ -44,30 +84,6 @@ class Main
 	}
 
 	/**
-	 * update method handles the updating of riding veiws
-	 */
-	static #update()
-	{
-		if(Main.#active)
-		{
-
-			if(Main.#time % Main.#primaryDuration === 0)
-			{
-				console.log("UPDATE MAIN")
-			}
-
-			if(Main.#time % Main.#secondaryDuration === 0)
-			{
-				console.log("UPDATE Secondary")
-			}
-
-			Main.#time++;
-		}
-
-		setTimeout(Main.#update, 1000)
-	}
-
-	/**
 	 * addParties appends a new party into parties array
 	 *
 	 * @param {param} party that will be appended to parties
@@ -78,7 +94,7 @@ class Main
 	{
 		if(typeof party === "object" && party.constructor.name === Party.name)
 		{
-			Main.parties.push(party)
+			Main.#parties.push(party)
 		}
 		else
 		{
@@ -97,12 +113,32 @@ class Main
 	{
 		if(typeof riding === "object" && riding.constructor.name === Riding.name)
 		{
-			Main.ridings.push(riding)
+			Main.#ridings.push(riding)
 		}
 		else
 		{
 			throw "IlligalArguments"
 		}
+	}
+
+	/**
+	 * getRiding gets the riding at specfic index
+	 *
+	 * @param {param} index is number 
+	 *
+	 * @returns {Riding} riding at index
+	 */
+	static getRiding(index)
+	{
+		return Main.#ridings[index]
+	}
+
+	/**
+	 * DOCUMENTATION HERE
+	 */
+	static ridingCount()
+	{
+		return Main.#ridings.length
 	}
 
 	/**
