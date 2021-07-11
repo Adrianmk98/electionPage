@@ -7,6 +7,7 @@ class Candidate
 	#name;
 	#faceSteal;
 	#voteCount = [];
+	votes = 0;
 
 	/**
 	 * constructor assigns and validates new candidate values
@@ -191,12 +192,13 @@ class Candidate
 			{
 				if(arguments[0].toString().indexOf('.') != -1)
 				{
-					return this.#getVoteCount2(arguments[0])
+					this.votes = this.#getVoteCount2(arguments[0])
 				}
 				else if(arguments[0].toString().indexOf('.') == -1)
 				{
-					return this.#getVoteCount3(arguments[0])
-				}	
+					this.votes = this.#getVoteCount3(arguments[0])
+				}
+				return this.votes
 			}
 		}
 
