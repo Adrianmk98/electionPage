@@ -37,5 +37,18 @@ class RidingPools
 				this.queue.splice(i1, 1)
 			}
 		}
+
+		if(!isNaN(this.max))
+		{
+			var i1 = 0;
+			while (this.active.length > this.max && i1 < this.active.length)
+			{
+				if(this.active[i1].countingCheck(time))
+				{
+					this.active.splice(i1, 1)
+				}
+				i1++
+			}
+		}
 	}
 }
