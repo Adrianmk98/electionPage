@@ -3,11 +3,6 @@
  */
 class Facade
 {
-	constructor()
-	{
-		throw new Exception("Abstract method not implemented")
-	}
-
 	/**
 	 * draw method creates html elements
 	 */
