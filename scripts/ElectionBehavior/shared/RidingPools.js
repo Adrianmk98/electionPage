@@ -5,7 +5,9 @@ class RidingPools
 {
 	queue = []
 	active = []
+	selected = null;
 	max;
+
 
 	constructor(max, ridings)
 	{
@@ -50,5 +52,18 @@ class RidingPools
 				i1++
 			}
 		}
+	}
+
+	selectActive()
+	{
+		if(this.active.length === 0)
+		{
+			this.selected = null
+		}
+		else
+		{
+			this.selected = this.active[Math.floor(Math.random() * this.active.length)]
+		}
+		return this.selected
 	}
 }
