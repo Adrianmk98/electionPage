@@ -231,9 +231,9 @@ class Candidate
 			return 0;
 		}
 
-		if(this.#voteCount.length <= y2)
+		if(y2 >= this.#voteCount.length)
 		{
-			return this.#voteCount[this.#voteCount.length]
+			return this.#voteCount[this.#voteCount.length - 1]
 		}
 
 		return Math.round(this.#voteCount[y1] + x * (this.#voteCount[y2] - this.#voteCount[y1]))
