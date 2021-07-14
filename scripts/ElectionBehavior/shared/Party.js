@@ -114,6 +114,26 @@ class Party
 	}
 
 	/**
+	 * returns the string for name
+	 *
+	 * @return {String} name value
+	 */
+	getName()
+	{
+		return this.#name
+	}
+
+	/**
+	 * returns the string for party abrevation
+	 *
+	 * @return {String} party abrevation value
+	 */
+	getAbrv()
+	{
+		return this.#abrv
+	}
+	
+	/**
 	 * updateElements updates the colour format of all html elements with key id
 	 */
 	updateElements()
