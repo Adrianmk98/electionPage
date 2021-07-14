@@ -40,24 +40,45 @@ class Main
 	{
 		if(Main.#active)
 		{
-		Main.#primaryRidingPool.updatePool(Main.#time)
-		Main.#secondaryRidingPool.updatePool(Main.#time)
+			Main.#primaryRidingPool.updatePool(Main.#time)
+			Main.#secondaryRidingPool.updatePool(Main.#time)
 
-			if(Main.#time % Main.#primaryDuration === 0)
+			$("#header").children().last().text(
+				"Polls Reporting "
+				+ Main.#secondaryRidingPool.active.length
+				+ "/"
+				+ (Main.#secondaryRidingPool.queue.length+Main.#secondaryRidingPool.active.length)
+			)
+
+			if(Main.#primaryRidingPool.active.length > 0)
 			{
-				if(Main.#primaryRidingPool.active.length > 0)
+				if(Main.#time % Main.#primaryDuration === 0)
 				{
-					Main.#primaryPolling.draw(Main.#primaryRidingPool.active[0], Main.#parties, Main.#time)
+					Main.#primaryRidingPool.selectActive()
+					Main.#primaryPolling.draw(Main.#primaryRidingPool.selected, Main.#parties, Main.#time)
+					
+					console.log("UPDATE MAIN")
+					console.log(Main.#primaryRidingPool)
 				}
-				
-				console.log("UPDATE MAIN")
-				console.log(Main.#primaryRidingPool)
+				else
+				{
+					if(Main.#primaryRidingPool.selected !== null)
+					{
+						Main.#primaryPolling.update(Main.#primaryRidingPool.selected, Main.#parties, Main.#time)
+					}
+				}
 			}
 
 			if(Main.#time % Main.#secondaryDuration === 0)
 			{
 				console.log("UPDATE Secondary")
 				console.log(Main.#secondaryRidingPool)
+			}
+
+			var parties = Object.values(Main.#parties)
+			for(var i1 = 0; i1 < parties.length; i1++)
+			{
+				parties[i1].updateElements()
 			}
 
 			Main.#time++;
