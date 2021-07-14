@@ -1,6 +1,6 @@
 class Main
 {
-	static #parties = []
+	static #parties = {}
 	static #ridings = []
 
 	static #primaryDuration = 0;
@@ -11,6 +11,8 @@ class Main
 
 	static #active = true;
 	static #time = 0;
+
+	static #primaryPolling = new PrimaryPolling();
 
 	/**
 	 * start methods intiates the election livestream
@@ -43,6 +45,11 @@ class Main
 
 			if(Main.#time % Main.#primaryDuration === 0)
 			{
+				if(Main.#primaryRidingPool.active.length > 0)
+				{
+					Main.#primaryPolling.draw(Main.#primaryRidingPool.active[0], Main.#parties, Main.#time)
+				}
+				
 				console.log("UPDATE MAIN")
 				console.log(Main.#primaryRidingPool)
 			}
@@ -94,7 +101,7 @@ class Main
 	{
 		if(typeof party === "object" && party.constructor.name === Party.name)
 		{
-			Main.#parties.push(party)
+			Main.#parties[party.getKey()]=party
 		}
 		else
 		{
