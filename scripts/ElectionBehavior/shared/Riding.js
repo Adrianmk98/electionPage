@@ -13,6 +13,8 @@ class Riding
 	
 	#candidates = []
 
+	votes = 0
+
 
 	/**
 	 * constructor assigns and validates new candidate values
@@ -217,10 +219,12 @@ class Riding
 	getCandidateVote(time)
 	{
 		var candidateVote = []
-		for(var i1 = 0; i1 < this.#candidates; i1++)
+		this.votes = 0
+		for(var i1 = 0; i1 < this.#candidates.length; i1++)
 		{
-			this.#candidates[i1].getVoteCount(time)
+			this.#candidates[i1].getVoteCount((time - this.#startTime)/this.#deltaTime)
 			candidateVote.push(this.#candidates[i1])
+			this.votes+=this.#candidates[i1].votes
 		}
 
 		candidateVote.sort((a, b) => 
@@ -229,6 +233,7 @@ class Riding
 		});
 
 		candidateVote.reverse()
+		console.log(candidateVote)
 		return candidateVote
 	}
 	
