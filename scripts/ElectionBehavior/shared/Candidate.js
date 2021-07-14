@@ -190,14 +190,7 @@ class Candidate
 		{
 			if(!isNaN(arguments[0]) && typeof arguments[0] === "number")
 			{
-				if(arguments[0].toString().indexOf('.') != -1)
-				{
-					this.votes = this.#getVoteCount2(arguments[0])
-				}
-				else if(arguments[0].toString().indexOf('.') == -1)
-				{
-					this.votes = this.#getVoteCount3(arguments[0])
-				}
+				this.votes = this.#getVoteCount2(arguments[0])
 				return this.votes
 			}
 		}
@@ -233,9 +226,14 @@ class Candidate
 		var y2 = Math.ceil(time)
 		var x = time % 1;
 
-		if(y1 < 0 || this.#voteCount.length <= y2)
+		if(y1 < 0)
 		{
-			throw "outOfRangeError"
+			return 0;
+		}
+
+		if(this.#voteCount.length <= y2)
+		{
+			return this.#voteCount[this.#voteCount.length]
 		}
 
 		return Math.round(this.#voteCount[y1] + x * (this.#voteCount[y2] - this.#voteCount[y1]))
