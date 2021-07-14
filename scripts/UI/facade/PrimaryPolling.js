@@ -3,6 +3,8 @@ class PrimaryPolling extends Facade
 	static area = $("#main");
 	static ridingName = $("#header")
 
+	static #candidates;
+
 	constructor()
 	{
 		super()
@@ -10,15 +12,14 @@ class PrimaryPolling extends Facade
 
 	draw(riding, parties, time)
 	{
-		var candidates = riding.getCandidateVote(time)
+		PrimaryPolling.#candidates = riding.getCandidateVote(time)
 		var tmp = ""
-		for(var i1 = 0; i1 < candidates.length; i1++)
+		var candidate;
+		for(var i1 = 0; i1 < PrimaryPolling.#candidates.length; i1++)
 		{
-			console.log(candidates[i1])
-			console.log(parties[candidates[i1].getParty()])
-			tmp += this.#draw(candidates[i1], parties[candidates[i1].getParty()].getAbrv(), riding.votes, i1 == 0)
+			candidate = PrimaryPolling.#candidates[i1]
+			tmp += this.#draw(candidate, parties[candidate.getParty()].getAbrv(), riding.votes, i1 == 0)
 		}
-		console.log(tmp)
 		PrimaryPolling.area.html(tmp)
 		PrimaryPolling.ridingName.children().first().text(riding.getName())
 	}
@@ -40,9 +41,10 @@ class PrimaryPolling extends Facade
 			tmp += '<div class="cover"></div>'
 			tmp += '<div class="vote">'
 				tmp += '<div class="percent">'
-					tmp += '<h1>'+ (candidate.votes / totalVoteCount * 100) +'%</h1>'
+					var votePercent = Math.round(candidate.votes / totalVoteCount * 100)
+					tmp += '<h1>'+ votePercent +'%</h1>'
 					tmp += '<div id="progressBar">'
-						tmp += '<div class="progress partyColour"></div>'
+						tmp += '<div style="width: '+ votePercent +'%;" class="progress partyColour"></div>'
 					tmp += '</div>'
 				tmp += '</div>'
 				tmp += '<div class="voteCount '
@@ -52,10 +54,17 @@ class PrimaryPolling extends Facade
 				}
 					tmp+='">'
 
-					tmp += '<h3>' + 270 + '</h3>'
+					tmp += '<h3>' + candidate.votes + '</h3>'
 				if(winner)
 				{
-					tmp += '<h3>'+ (totalVoteCount - candidate.votes) +'lead'+'</h3>'
+					if(PrimaryPolling.#candidates.length > 2)
+					{
+						tmp += '<h3>'+ (totalVoteCount - PrimaryPolling.#candidates[1].votes) +' lead'+'</h3>'
+					}
+					else
+					{
+						tmp += '<h3>'+ totalVoteCount +' lead'+'</h3>'
+					}
 				}
 				tmp += '</div>'
 			tmp += '</div>'
@@ -63,5 +72,19 @@ class PrimaryPolling extends Facade
 		tmp += '</div>'
 
 		return tmp
+	}
+
+	update(riding, parties, time)
+	{
+		PrimaryPolling.#candidates = riding.getCandidateVote(time)
+		var tmp = ""
+		var candidate;
+		for(var i1 = 0; i1 < PrimaryPolling.#candidates.length; i1++)
+		{
+			candidate = PrimaryPolling.#candidates[i1]
+			tmp += this.#draw(candidate, parties[candidate.getParty()].getAbrv(), riding.votes, i1 == 0)
+		}
+		PrimaryPolling.area.html(tmp)
+		PrimaryPolling.ridingName.children().first().text(riding.getName())
 	}
 }
