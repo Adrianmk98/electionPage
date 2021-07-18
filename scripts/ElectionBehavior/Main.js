@@ -17,9 +17,9 @@ class Main
 	static #seatCount = new SeatCount();
 
 	/**
-	 * start methods intiates the election livestream
+	 * sets up the intial structure of the livestream
 	 */
-	static start()
+	static initialize()
 	{
 		console.log("started")
 
@@ -34,6 +34,16 @@ class Main
 		Main.#seatCount.draw(Object.values(Main.#parties))
 
 		Main.#update()
+
+		Main.pause()
+	}
+
+	/**
+	 * start method starts the livestream
+	 */
+	static start()
+	{
+		Main.play()
 	}
 
 	/**
@@ -84,7 +94,7 @@ class Main
 			}
 
 
-			Main.#seatCount.update(Main.#ridings)
+			Main.#seatCount.update(Main.#ridings, Main.#time)
 			
 			var parties = Object.values(Main.#parties)
 			for(var i1 = 0; i1 < parties.length; i1++)
