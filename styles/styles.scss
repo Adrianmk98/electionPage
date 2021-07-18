@@ -130,7 +130,7 @@ body
 {
 	display: grid;
 
-	grid-template-columns: 1fr 10fr 1fr 5fr;
+	grid-template-columns: 1/17*100% 10/17*100% 1/17*100% 5/17*100%;
 
 	grid-template-rows: 10vh 1fr 50vh 1fr 15vh;
 
@@ -475,12 +475,12 @@ body
 
 				.candidate
 				{
-					height: 25%;
+					height: 12.5vh;
 					width: $primaryWidth;
 
 					display: grid;
 
-					grid-template-columns: 1fr 3fr;
+					grid-template-columns: 12.5vh auto;
 
 					grid-template-rows: 1fr 1fr 1fr;
 					
@@ -552,8 +552,10 @@ body
 				}
 				.candidate:first-child
 				{
-					height: 40%;
+					height: 20vh;
 					width: 100%;
+
+    				grid-template-columns: 20vh auto;
 
 					border-top-right-radius: 0px;
 					border-bottom-right-radius: 0px;
