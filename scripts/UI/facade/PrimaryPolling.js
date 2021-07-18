@@ -10,6 +10,13 @@ class PrimaryPolling extends Facade
 		super()
 	}
 
+	/**
+	 * generates primary polling area html
+	 *
+	 * @param {Riding} riding that will displayed in the primary polling area
+	 * @param {parties} parties used to update colours of html elements
+	 * @param {time} time is the current time value
+	 */
 	draw(riding, parties, time)
 	{
 		PrimaryPolling.#candidates = riding.getCandidateVote(time)
@@ -41,7 +48,16 @@ class PrimaryPolling extends Facade
 			tmp += '<div class="cover"></div>'
 			tmp += '<div class="vote">'
 				tmp += '<div class="percent">'
-					var votePercent = Math.round(candidate.votes / totalVoteCount * 100)
+
+					var votePercent;
+					if(totalVoteCount === 0)
+					{
+						votePercent = 0
+					}
+					else
+					{
+						votePercent = Math.round(candidate.votes / totalVoteCount * 100)
+					}
 					tmp += '<h1>'+ votePercent +'%</h1>'
 					tmp += '<div id="progressBar">'
 						tmp += '<div style="width: '+ votePercent +'%;" class="progress partyColour"></div>'
@@ -74,6 +90,13 @@ class PrimaryPolling extends Facade
 		return tmp
 	}
 
+	/**
+	 * update the primary polling area
+	 *
+	 * @param {Riding} riding that will displayed in the primary polling area
+	 * @param {parties} parties used to update colours of html elements
+	 * @param {time} time is the current time value
+	 */
 	update(riding, parties, time)
 	{
 		PrimaryPolling.#candidates = riding.getCandidateVote(time)
