@@ -196,7 +196,6 @@ class Candidate
 		}
 
 		throw "IlligalArguments"
-
 	}
 
 	/**
