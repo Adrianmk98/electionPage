@@ -56,9 +56,6 @@ class Main
 				{
 					Main.#primaryRidingPool.selectActive()
 					Main.#primaryPolling.draw(Main.#primaryRidingPool.selected, Main.#parties, Main.#time)
-					
-					console.log("UPDATE MAIN")
-					console.log(Main.#primaryRidingPool)
 				}
 				else
 				{
@@ -83,6 +80,10 @@ class Main
 
 			Main.#time++;
 		}
+		else
+		{
+			console.log("PAUSE")
+		}
 
 		setTimeout(Main.#update, 1000)
 	}
@@ -92,7 +93,7 @@ class Main
 	 */
 	static togglePause()
 	{
-		Main.#active = Main.#active === true
+		Main.#active = !Main.#active
 	}
 
 	/**
@@ -162,7 +163,9 @@ class Main
 	}
 
 	/**
-	 * DOCUMENTATION HERE
+	 * ridingCount gets the number of ridings
+	 *
+	 * @return {integer} number of ridings
 	 */
 	static ridingCount()
 	{
