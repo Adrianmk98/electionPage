@@ -144,6 +144,7 @@ class SetUp
 		if(count == 5)
 		{
 			$("#setup").css("display","none")
+			Main.initialize()
 		}
 		else if(count == 0)
 		{
