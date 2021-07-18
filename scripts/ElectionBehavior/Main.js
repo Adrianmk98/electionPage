@@ -13,6 +13,7 @@ class Main
 	static #time = 0;
 
 	static #primaryPolling = new PrimaryPolling();
+	static #secondaryPolling = new SecondaryPolling();
 
 	/**
 	 * start methods intiates the election livestream
@@ -43,7 +44,7 @@ class Main
 			Main.#primaryRidingPool.updatePool(Main.#time)
 			Main.#secondaryRidingPool.updatePool(Main.#time)
 
-			$("#header").children().last().text(
+			$("#reportingPolls").text(
 				"Polls Reporting "
 				+ Main.#secondaryRidingPool.active.length
 				+ "/"
@@ -65,7 +66,21 @@ class Main
 					}
 				}
 			}
-
+			if(Main.#secondaryRidingPool.active.length > 0)
+			{
+				if(Main.#time % Main.#secondaryDuration === 0)
+				{
+					Main.#secondaryRidingPool.selectActive()
+					Main.#secondaryPolling.draw(Main.#secondaryRidingPool.selected, Main.#parties, Main.#time)
+				}
+				else
+				{
+					if(Main.#secondaryRidingPool.selected !== null)
+					{
+						Main.#secondaryPolling.update(Main.#secondaryRidingPool.selected, Main.#parties, Main.#time)
+					}
+				}
+			}
 			if(Main.#time % Main.#secondaryDuration === 0)
 			{
 				console.log("UPDATE Secondary")
