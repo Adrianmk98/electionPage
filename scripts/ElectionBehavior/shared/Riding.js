@@ -13,6 +13,8 @@ class Riding
 	
 	#candidates = []
 
+	#winnerCalc;
+
 	votes = 0
 
 
@@ -42,6 +44,8 @@ class Riding
 		{
 			throw "IlligalArguments";
 		}
+
+		this.#winnerCalc = new FirstPastThePost()
 	}
 
 	/**
@@ -251,6 +255,16 @@ class Riding
 		}
 
 		return time > this.#endTime + this.#startTime
+	}
+
+	/**
+	 * getWinner returns the parties that won a seat in the riding
+	 *
+	 * @return {array} array or parties that won a seat
+	 */
+	getWinner()
+	{
+		return this.#winnerCalc.calculate(this.#candidates)
 	}
 
 }
