@@ -8,7 +8,12 @@ class RidingPools
 	selected = null;
 	max;
 
-
+	/**
+	 * constructor sets up RiddingPools object
+	 *
+	 * @param {integer} max is the max number of ridings in the active pool
+	 * @param {Array} ridings is an array of Riding objects that are inserted in a queue
+	 */
 	constructor(max, ridings)
 	{
 		this.max = max
@@ -17,6 +22,14 @@ class RidingPools
 		{
 			this.queue.push(ridings[i1])
 		}
+
+		this.queue.sort((a, b) => 
+		{
+			return a.getStartTime() - b.getStartTime();
+		});
+
+	
+		this.active.push(this.queue.splice(0,1)[0])
 	}
 
 	/**
@@ -54,6 +67,11 @@ class RidingPools
 		}
 	}
 
+	/**
+	 * selectActivity picks a random riding in the active pool
+	 *
+	 * @return {Riding} the new selected riding is returned
+	 */
 	selectActive()
 	{
 		if(this.active.length === 0)
