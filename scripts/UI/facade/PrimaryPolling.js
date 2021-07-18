@@ -36,6 +36,8 @@ class PrimaryPolling extends Facade
 	 *
 	 * @param {Candidate} candidate is a candidate object that stores key candidate information
 	 * @param {partyName} partyName is the name of the party
+	 *
+	 * @return {String} string format of html of a candidate box
 	 */
 	#draw(candidate, partyName, totalVoteCount, winner)
 	{
