@@ -233,7 +233,6 @@ class Riding
 		});
 
 		candidateVote.reverse()
-		console.log(candidateVote)
 		return candidateVote
 	}
 	
