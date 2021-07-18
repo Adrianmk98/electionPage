@@ -39,17 +39,16 @@ class Main
 	 */
 	static #update()
 	{
+		$("div#reportingPolls").html(
+			"Polls Reporting "
+			+ Main.#secondaryRidingPool.active.length
+			+ "/"
+			+ (Main.#secondaryRidingPool.queue.length+Main.#secondaryRidingPool.active.length)
+		)
 		if(Main.#active)
 		{
 			Main.#primaryRidingPool.updatePool(Main.#time)
 			Main.#secondaryRidingPool.updatePool(Main.#time)
-
-			$("#reportingPolls").text(
-				"Polls Reporting "
-				+ Main.#secondaryRidingPool.active.length
-				+ "/"
-				+ (Main.#secondaryRidingPool.queue.length+Main.#secondaryRidingPool.active.length)
-			)
 
 			if(Main.#primaryRidingPool.active.length > 0)
 			{
@@ -81,11 +80,6 @@ class Main
 					}
 				}
 			}
-			if(Main.#time % Main.#secondaryDuration === 0)
-			{
-				console.log("UPDATE Secondary")
-				console.log(Main.#secondaryRidingPool)
-			}
 
 			var parties = Object.values(Main.#parties)
 			for(var i1 = 0; i1 < parties.length; i1++)
@@ -94,10 +88,6 @@ class Main
 			}
 
 			Main.#time++;
-		}
-		else
-		{
-			console.log("PAUSE")
 		}
 
 		setTimeout(Main.#update, 1000)
