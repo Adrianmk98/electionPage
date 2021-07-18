@@ -14,6 +14,7 @@ class Main
 
 	static #primaryPolling = new PrimaryPolling();
 	static #secondaryPolling = new SecondaryPolling();
+	static #seatCount = new SeatCount();
 
 	/**
 	 * start methods intiates the election livestream
@@ -30,6 +31,7 @@ class Main
 		Main.#primaryRidingPool.updatePool(Main.#time)
 		Main.#secondaryRidingPool.updatePool(Main.#time)
 
+		Main.#seatCount.draw(Object.values(Main.#parties))
 
 		Main.#update()
 	}
@@ -81,6 +83,9 @@ class Main
 				}
 			}
 
+
+			Main.#seatCount.update(Main.#ridings)
+			
 			var parties = Object.values(Main.#parties)
 			for(var i1 = 0; i1 < parties.length; i1++)
 			{
