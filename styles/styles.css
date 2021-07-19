@@ -60,6 +60,12 @@ body {
  #setup .alert {
 	 animation: errorAnimation 10s 1;
 }
+ #background {
+	 transition: transform;
+	 transition-timing-function: ease;
+	 transition-duration: 5s;
+	 transform: scale(1) translate(0%, 0%);
+}
  #background div {
 	 background-color: rgba(172, 186, 198, 0.7);
 	 width: 100%;
