@@ -88,7 +88,7 @@ class SeatCount extends Facade
 
 		for(var i1 = 0; i1 < winners.length; i1++)
 		{
-			$("div#"+winners[i1]+".party").children().last().text(seatCounts[winners[i1]])
+			$("#"+winners[i1]+".party").children().last().text(seatCounts[winners[i1]])
 		}
 	}
 }
