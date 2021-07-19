@@ -20,8 +20,97 @@ body
 	transition: width 0.5s ease;
 }
 
+#setup
+{
+	z-index: 5;
+	background-color: white;
+
+	display: flex;
+	flex-direction: column;
+	flex-flow: center;
+
+	>*
+	{
+		width: fit-content;
+
+		margin-top: 10px;
+
+		align-self: center;
+	}
+
+	
+	$timeInterval: 0.3;
+	$totalTime: 10;
+	$fadeOutTime: 1;
+    
+	@keyframes errorAnimation {
+		$timeInterval: 0.3;
+		$totalTime: 30;
+		$fadeOutTime: 1;
+		0% 
+		{
+			opacity: 1;
+		}
+		@for $i from 1 through 3
+		{
+			#{$timeInterval / $totalTime * $i * 100%}
+			{
+				@if $i%2 == 0
+				{
+					transform: translate(-20px, 0px);
+				}
+				@else
+				{
+					transform: translate(20px, 0px);
+				}
+				
+			}
+		}
+		#{$timeInterval / $totalTime * 4 * 100%}
+		{
+			transform: translate(-10px, 0px);
+		}
+		#{$timeInterval / $totalTime * 5 * 100%}
+		{
+			transform: translate(0px, 0px);
+		}
+
+		#{($totalTime - $fadeOutTime)/$totalTime * 100%}
+		{
+			opacity: 1;
+		}
+		100%
+		{
+			opacity: 0;
+		}
+	}
+
+	div
+	{
+		display: flex;
+		flex-flow: center;
+	}
+
+	#message
+	{
+		opacity: 0;
+	}
+	.alert
+	{
+
+		animation: errorAnimation $totalTime * 1s 1;
+		//animation-play-state: paused;
+	}
+
+}
+
 #background
 {
+	transition: transform;
+	transition-timing-function: ease;
+	transition-duration: 5s;
+	transform: scale(1) translate(0%,0%);
+
 	div
 	{
 		background-color: rgba(172, 186, 198, 0.7);
@@ -46,7 +135,7 @@ body
 {
 	display: grid;
 
-	grid-template-columns: 1fr 10fr 1fr 5fr;
+	grid-template-columns: 1/17*100% 10/17*100% 1/17*100% 5/17*100%;
 
 	grid-template-rows: 10vh 1fr 50vh 1fr 15vh;
 
@@ -391,12 +480,12 @@ body
 
 				.candidate
 				{
-					height: 25%;
+					height: 12.5vh;
 					width: $primaryWidth;
 
 					display: grid;
 
-					grid-template-columns: 1fr 3fr;
+					grid-template-columns: 12.5vh auto;
 
 					grid-template-rows: 1fr 1fr 1fr;
 					
@@ -468,8 +557,10 @@ body
 				}
 				.candidate:first-child
 				{
-					height: 40%;
+					height: 20vh;
 					width: 100%;
+
+    				grid-template-columns: 20vh auto;
 
 					border-top-right-radius: 0px;
 					border-bottom-right-radius: 0px;
@@ -522,6 +613,7 @@ body
 				#bar
 				{
 					width: 2px;
+					margin: 0px;
 					height: 90%;
 					
 					grid-column-start: 2;

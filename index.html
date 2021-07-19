@@ -5,112 +5,55 @@
 	<link rel="stylesheet" type="text/css" href=styles/styles.css>
 </head>
 <body>
+	<div id="setup" class="base">
+
+		<h1>Election Live Stream</h1>
+		<h2>Set Up</h2>
+		
+		<div>
+			Party Data: <input id="partySettings" type="file">
+		</div>
+		
+
+		<div>
+			Riding Data: <input id="ridingSettings" type="file">
+		</div>
+
+		<div>
+			Primary:
+			<input type="number" min="0" value="10" id="primary">
+			<select id="primary">
+				<option value="sec">sec</option>
+				<option value="min">min</option>
+			</select>
+		</div>
+
+		<div>
+			Secondary:
+			<input type="number" min="0" value="10" id="secondary">
+			<select id="secondary">
+				<option value="sec">sec</option>
+				<option value="min">min</option>
+			</select>
+		</div>
+
+		<button id="run">RUN</button>
+
+		<div id="message">
+		</div>
+	</div>
 	<div id="ridingResults" class="base">
 		<div id="header" class="content">
 			<div>
 				Name
 			</div>
 
-			<div>
+			<div id="reportingPolls">
 				Polls Reporting 2/148
 			</div>
 		</div>
 		<div id="main" class="content">
-			<div class="candidate partyColourBorder">
-				<img src="facesteals/1.jpg">
-				<div class="party partyColour">
-					PARTY
-				</div>
-				<div class="name">
-					U/Name
-				</div>
-				<div class="cover">
-				</div>
-				<div class="vote">
-					<div class="percent">
-						<h1>
-							12%
-						</h1>
-						<div id="progressBar">
-							<div class="progress partyColour">
-							</div>
-						</div>
-					</div>
-
-					<div class="voteCount winner">
-						<h3>
-							270
-						</h3>
-						<h3>
-							100 lead
-						</h3>
-					</div>
-				</div>
-				<div class="bottom">
-				</div>
-			</div>
-
-			<div class="candidate partyColourBorder">
-				<img src="facesteals/1.jpg">
-				<div class="party partyColour">
-					PARTY
-				</div>
-				<div class="name">
-					U/Name
-				</div>
-				<div class="cover">
-				</div>
-				<div class="vote">
-					<div class="percent">
-						<h1>
-							12%
-						</h1>
-						<div id="progressBar">
-							<div class="progress partyColour">
-							</div>
-						</div>
-					</div>
-
-					<div class="voteCount">
-						<h3>
-							270
-						</h3>
-					</div>
-				</div>
-				<div class="bottom">
-				</div>
-			</div>
-
-			<div class="candidate partyColourBorder">
-				<img src="facesteals/1.jpg">
-				<div class="party partyColour">
-					PARTY
-				</div>
-				<div class="name">
-					U/Name
-				</div>
-				<div class="cover">
-				</div>
-				<div class="vote">
-					<div class="percent">
-						<h1>
-							12%
-						</h1>
-						<div id="progressBar">
-							<div class="progress partyColour">
-							</div>
-						</div>
-					</div>
-
-					<div class="voteCount">
-						<h3>
-							270
-						</h3>
-					</div>
-				</div>
-				<div class="bottom">
-				</div>
-			</div>
+			
 		</div>
 		<div id="rightBar" class="content">
 			<div id="logo">
@@ -133,69 +76,7 @@
 					Riding Name
 				</div>
 				<div class="candidates">
-					<div class="candidate">
-						<img src="facesteals/1.jpg">
-						<div id="party" class="partyColour">
-							<div>
-								PARTY
-							</div>
-						</div>
-						<div id="name">
-							<div>
-								name
-							</div>
-						</div>
-						<div id="vote">
-							<div>
-								10%
-							</div>
-							<div>
-								0
-							</div>
-						</div>
-					</div>
-					<div class="candidate">
-						<img src="facesteals/1.jpg">
-						<div id="party" class="partyColour">
-							<div>
-								PARTY
-							</div>
-						</div>
-						<div id="name">
-							<div>
-								name
-							</div>
-						</div>
-						<div id="vote">
-							<div>
-								10%
-							</div>
-							<div>
-								0
-							</div>
-						</div>
-					</div>
-					<div class="candidate">
-						<img src="facesteals/1.jpg">
-						<div id="party" class="partyColour">
-							<div>
-								PARTY
-							</div>
-						</div>
-						<div id="name">
-							<div>
-								name
-							</div>
-						</div>
-						<div id="vote">
-							<div>
-								10%
-							</div>
-							<div>
-								0
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 
@@ -211,41 +92,10 @@
 					</div>
 				</div>
 				<div id="polling">
-					<div id="party1" class="partyColour progress"></div>
-					<div id="party2" class="partyColour progress"></div>
-					<div id="party3" class="partyColour progress"></div>
 				</div>
 			</div>
 		</div>
 		<div id="footer" class="content">
-			<div class="party partyColour">
-				<div class="name">
-					PAR
-				</div>
-				<div class="seat">
-					12
-				</div>
-			</div>
-			<div class="separator">
-			</div>
-			<div class="party partyColour">
-				<div class="name">
-					PAR
-				</div>
-				<div class="seat">
-					12
-				</div>
-			</div>
-			<div class="separator">
-			</div>
-			<div class="party partyColour">
-				<div class="name">
-					PAR
-				</div>
-				<div class="seat">
-					12
-				</div>
-			</div>
 		</div>
 		
 	</div>
@@ -255,8 +105,35 @@
 		<img src="backgrounds\2.jpg" id="currentBackgroundImage" class="base">
 	</div>
 
+	<!-- Dependencies -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="scripts/backgroundHandler.js"></script>
+	<script src="scripts/ElectionBehavior/shared/Listener.js"></script>
+	<script src="scripts/ElectionBehavior/shared/Riding.js"></script>
+	<script src="scripts/ElectionBehavior/shared/Candidate.js"></script>
+	<script src="scripts/ElectionBehavior/shared/Party.js"></script>
+	<script src="scripts/ElectionBehavior/shared/Exception.js"></script>
+	<script src="scripts/ElectionBehavior/shared/RidingPools.js"></script>
+	<script src="scripts/ElectionBehavior/shared/winnerCalculator/WinnerCalculator.js"></script>
+	<script src="scripts/ElectionBehavior/shared/winnerCalculator/FirstPastThePost.js"></script>
+
+	<!-- UI scripts -->
+	<script src="scripts/UI/facade/Facade.js"></script>	
+	<script src="scripts/UI/backgroundHandler.js"></script>
+	<script src="scripts/UI/facade/PrimaryPolling.js"></script>
+	<script src="scripts/UI/facade/SecondaryPolling.js"></script>
+	<script src="scripts/UI/facade/SeatCount.js"></script>
+	<script src="scripts/UI/facade/MajorityMeter.js"></script>
+	
+	<!-- SetUp -->
+	<script src="scripts/ElectionBehavior/CSVParser.js"></script>
+	<script src="scripts/ElectionBehavior/SetUp.js"></script>
+	
+	<!-- Main -->
+	<script src="scripts/ElectionBehavior/Main.js"></script>
+	
+
+	<!-- Election  -->
+
 
 </body>
 

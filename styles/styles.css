@@ -12,6 +12,60 @@ body {
  .progress {
 	 transition: width 0.5s ease;
 }
+ #setup {
+	 z-index: 5;
+	 background-color: white;
+	 display: flex;
+	 flex-direction: column;
+	 flex-flow: center;
+}
+ #setup > * {
+	 width: fit-content;
+	 margin-top: 10px;
+	 align-self: center;
+}
+ @keyframes errorAnimation {
+	 0% {
+		 opacity: 1;
+	}
+	 1% {
+		 transform: translate(20px, 0px);
+	}
+	 2% {
+		 transform: translate(-20px, 0px);
+	}
+	 3% {
+		 transform: translate(20px, 0px);
+	}
+	 4% {
+		 transform: translate(-10px, 0px);
+	}
+	 5% {
+		 transform: translate(0px, 0px);
+	}
+	 96.6666666667% {
+		 opacity: 1;
+	}
+	 100% {
+		 opacity: 0;
+	}
+}
+ #setup div {
+	 display: flex;
+	 flex-flow: center;
+}
+ #setup #message {
+	 opacity: 0;
+}
+ #setup .alert {
+	 animation: errorAnimation 10s 1;
+}
+ #background {
+	 transition: transform;
+	 transition-timing-function: ease;
+	 transition-duration: 5s;
+	 transform: scale(1) translate(0%, 0%);
+}
  #background div {
 	 background-color: rgba(172, 186, 198, 0.7);
 	 width: 100%;
@@ -27,7 +81,7 @@ body {
 }
  #ridingResults {
 	 display: grid;
-	 grid-template-columns: 1fr 10fr 1fr 5fr;
+	 grid-template-columns: 5.8823529412% 58.8235294118% 5.8823529412% 29.4117647059%;
 	 grid-template-rows: 10vh 1fr 50vh 1fr 15vh;
 	 grid-template-areas: "header header header rightBar" ". . . rightBar" ". main . rightBar" ". . . rightBar" "footer footer footer rightBar";
 	 z-index: 4;
@@ -232,10 +286,10 @@ body {
 	 height: 50vh;
 }
  #ridingResults #rightBar #secondaryPoll .candidates .candidate {
-	 height: 25%;
+	 height: 12.5vh;
 	 width: 85%;
 	 display: grid;
-	 grid-template-columns: 1fr 3fr;
+	 grid-template-columns: 12.5vh auto;
 	 grid-template-rows: 1fr 1fr 1fr;
 	 grid-template-areas: "face party" "face name" "face vote";
 	 border-radius: 10px;
@@ -275,8 +329,9 @@ body {
 	 color: #bfc8d3;
 }
  #ridingResults #rightBar #secondaryPoll .candidates .candidate:first-child {
-	 height: 40%;
+	 height: 20vh;
 	 width: 100%;
+	 grid-template-columns: 20vh auto;
 	 border-top-right-radius: 0px;
 	 border-bottom-right-radius: 0px;
 }
@@ -307,6 +362,7 @@ body {
 }
  #ridingResults #rightBar #majorityMeter #overlay #bar {
 	 width: 2px;
+	 margin: 0px;
 	 height: 90%;
 	 grid-column-start: 2;
 	 background-color: #56636e;
