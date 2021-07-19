@@ -356,6 +356,7 @@ body {
 }
  #ridingResults #rightBar #majorityMeter #overlay #bar {
 	 width: 2px;
+	 margin: 0px;
 	 height: 90%;
 	 grid-column-start: 2;
 	 background-color: #56636e;
