@@ -84,8 +84,6 @@ class SeatCount extends Facade
 
 		var winners = Object.keys(seatCounts)
 
-		//console.log(seatCounts)
-
 		$("div.party > .seat").text(0)
 
 		for(var i1 = 0; i1 < winners.length; i1++)
