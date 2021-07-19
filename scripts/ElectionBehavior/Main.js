@@ -15,6 +15,7 @@ class Main
 	static #primaryPolling = new PrimaryPolling();
 	static #secondaryPolling = new SecondaryPolling();
 	static #seatCount = new SeatCount();
+	static #majorityMeter = new MajorityMeter();
 
 	/**
 	 * sets up the intial structure of the livestream
@@ -32,6 +33,7 @@ class Main
 		Main.#secondaryRidingPool.updatePool(Main.#time)
 
 		Main.#seatCount.draw(Object.values(Main.#parties))
+		Main.#majorityMeter.draw(Object.keys(Main.#parties), Main.#ridings.length)
 
 		Main.#update()
 
@@ -95,6 +97,7 @@ class Main
 
 
 			Main.#seatCount.update(Main.#ridings, Main.#time)
+			Main.#majorityMeter.update(Main.#ridings, Main.#time)
 			
 			var parties = Object.values(Main.#parties)
 			for(var i1 = 0; i1 < parties.length; i1++)
