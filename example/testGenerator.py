@@ -1,3 +1,4 @@
+import random
 
 class Party:
     def __init__(self, key, shortName, longName, colour):
