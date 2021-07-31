@@ -58,3 +58,25 @@ class Riding:
         for party in self.parties:
             tmp += "\n{0}".format(party)
         return tmp
+def main():
+    partyCount = 5
+    
+    ridingGroups = 5
+    ridingCount = 3
+    defaultCountTime = 5
+
+    stepSize = [5, 6]
+    populationSize = [50000, 999000]
+    
+    parties = []
+    ridings = []
+    
+    for i in range(partyCount):
+        parties.append(Party("par{0}".format(i + 1), "P{0}".format(i + 1), "party-{0}".format(i + 1), "rgb({0},{1},{2})".format(random.randint(0,255), random.randint(0,255), random.randint(0,255))))
+
+    for i1 in range(ridingGroups):
+        for i2 in range(ridingCount):
+            ridings.append(Riding(i1 * defaultCountTime, random.randint(*stepSize), random.randint(*populationSize), "Riding-{0}".format(i1*ridingGroups+i2)))
+            ridings[-1].generateCandidates(parties, )
+            print(ridings[-1])
+main()
