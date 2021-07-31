@@ -50,3 +50,11 @@ class Riding:
                 candidate.polling.append(vote)
             if totalVotes <= 0:
                 break;
+        
+                
+                
+    def __str__(self):
+        tmp = "{0}\t{1}\t{2}\t{3}".format(self.startTime, self.stepSize, self.population, self.ridingName)
+        for party in self.parties:
+            tmp += "\n{0}".format(party)
+        return tmp
