@@ -20,3 +20,33 @@ class Candidate:
             tmp += "\t{0}".format(poll)
         return tmp
     
+class Riding:
+    def __init__(self, startTime, stepSize, population, ridingName):
+        self.startTime = startTime
+        self.stepSize = stepSize
+        self.population = population
+        self.ridingName = ridingName
+        self.parties = []
+    def generateCandidates(parties, steps):
+        partiesCopy = parties.copy()
+        candidateParties = []
+        #get candidates in riding
+        for i1 in range(random.randint(0, len(parties) - 1)):
+            candidateParties.append(partiesCopy.pop(random.randint(0,len(partiesCopy)-1)))
+        #add candidates in riding
+        for party in candidateParties:
+            self.parties.append(Candidate())
+        #generate polling for candidates
+        totalVotes = self.population
+        for i in range(steps):
+            tmpParties = self.parties.copy()
+            random.shuffle(tmpParties)
+            for candidate in tmpParties:
+                if totalVotes <= 0:
+                    break;
+                vote = random.randint(0, totalVotes)
+                if len(candidate.polling) != 0 :
+                    vote += candidate.polling[-1]
+                candidate.polling.append(vote)
+            if totalVotes <= 0:
+                break;
