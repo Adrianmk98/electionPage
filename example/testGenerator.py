@@ -59,6 +59,11 @@ class Riding:
         for party in self.parties:
             tmp += "\n{0}".format(party)
         return tmp
+
+def saveFile(string, name):
+    with open(name, "w") as file:
+        f.write(string)
+        
 def main():
     partyCount = 5
     
