@@ -15,7 +15,12 @@ class Candidate:
         self.partyKey = partyKey
         self.faceSteal = faceSteal
         self.name = name
+        if name == None:
+            self.name = Candidate.randomName()
+        else:
+            self.name = name
         self.polling = []
+        
     def __str__(self):
         tmp = "{0}\t{1}\t{2}".format(self.partyKey, self.faceSteal, self.name)
         for poll in self.polling:
