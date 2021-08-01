@@ -127,3 +127,6 @@ main()
             ridings[-1].generateCandidates(parties, random.randint(5,25))
             
     saveFile("\n".join(["{0}".format(r) for r in ridings]), "ridings2")
+
+if __name__ == "__main__":
+    main()
