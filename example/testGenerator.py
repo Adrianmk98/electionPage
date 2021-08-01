@@ -1,4 +1,5 @@
 import random
+import math
 
 class Party:
     def __init__(self, key, shortName, longName, colour):
@@ -63,6 +64,13 @@ class Riding:
                 candidate.polling.append(vote)
             if totalVotes <= 0:
                 break;     
+    def voteFormula(x, minVote, maxVote, offset = 0, scale = 1):
+        if x < offset * scale or x > (1 + offset) * scale:
+            return minVote
+        vote = 16 * maxVote * (1 / scale * x - offset)**2 * (1/scale*x-(offset+1))**2 + minVote
+        vote = math.floor(vote)
+        return vote
+    
     def __str__(self):
         tmp = "{0}\t{1}\t{2}\t{3}".format(self.startTime, self.stepSize, self.population, self.ridingName)
         for party in self.parties:
