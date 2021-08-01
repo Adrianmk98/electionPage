@@ -115,6 +115,8 @@ def main():
             colour += "{0}{1}".format(hexaDecimal[random.randint(0,15)],hexaDecimal[random.randint(0,15)])
         parties.append(Party("par{0}".format(i + 1), "P{0}".format(i + 1), "party-{0}".format(i + 1), colour))
 
+    saveFile("\n".join(["{0}".format(p) for p in parties]), "parties2")
+    
     for i1 in range(ridingGroups):
         for i2 in range(ridingCount):
             ridings.append(Riding(i1 * defaultCountTime, random.randint(*stepSize), random.randint(*populationSize), "Riding-{0}".format(i1*ridingGroups+i2)))
@@ -124,3 +126,4 @@ main()
             ridings.append(Riding(i1 * defaultCountTime * secondsToMin, random.randint(*stepSize) * secondsToMin, random.randint(*populationSize), "Riding-{0}".format(i1*ridingGroups+i2)))
             ridings[-1].generateCandidates(parties, random.randint(5,25))
             
+    saveFile("\n".join(["{0}".format(r) for r in ridings]), "ridings2")
