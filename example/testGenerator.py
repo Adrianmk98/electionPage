@@ -42,14 +42,18 @@ class Riding:
         self.ridingName = ridingName
         self.parties = []
     def generateCandidates(parties, steps):
+        
+    def generateCandidates(self, parties, steps):
         partiesCopy = parties.copy()
         candidateParties = []
         #get candidates in riding
         for i1 in range(random.randint(0, len(parties) - 1)):
+        for i1 in range(random.randint(1, len(parties) - 1)):
             candidateParties.append(partiesCopy.pop(random.randint(0,len(partiesCopy)-1)))
         #add candidates in riding
         for party in candidateParties:
             self.parties.append(Candidate())
+            self.parties.append(Candidate(party.key, "1.jpg"))
         #generate polling for candidates
         totalVotes = self.population
         for i in range(steps):
@@ -60,6 +64,9 @@ class Riding:
                     break;
                 vote = random.randint(0, totalVotes)
                 if len(candidate.polling) != 0 :
+                vote = Riding.voteFormula(random.random(), 0, totalVotes, (steps - i - 1) / steps)
+                totalVotes -= vote
+                if len(candidate.polling) > 0 :
                     vote += candidate.polling[-1]
                 candidate.polling.append(vote)
             if totalVotes <= 0:
