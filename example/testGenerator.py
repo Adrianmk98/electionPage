@@ -99,6 +99,7 @@ def main():
     ridingGroups = 5
     ridingCount = 3
     defaultCountTime = 5
+    secondsToMin = 60
 
     stepSize = [5, 6]
     populationSize = [50000, 999000]
