@@ -21,6 +21,18 @@ class Candidate:
             tmp += "\t{0}".format(poll)
         return tmp
     
+    def randomName():
+        '''
+            Static method that returns a randomly generated name from a predefined name list
+
+            Returns:
+                String of a random name
+        '''
+        if Candidate.names == None:
+            with open("names.txt","r") as f:
+                Candidate.names = f.readlines()
+        return Candidate.names[random.randint(0,len(Candidate.names)-1)].replace("\n","")
+    
 class Riding:
     def __init__(self, startTime, stepSize, population, ridingName):
         self.startTime = startTime
