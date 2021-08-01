@@ -121,3 +121,6 @@ def main():
             ridings[-1].generateCandidates(parties, )
             print(ridings[-1])
 main()
+            ridings.append(Riding(i1 * defaultCountTime * secondsToMin, random.randint(*stepSize) * secondsToMin, random.randint(*populationSize), "Riding-{0}".format(i1*ridingGroups+i2)))
+            ridings[-1].generateCandidates(parties, random.randint(5,25))
+            
