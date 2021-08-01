@@ -105,9 +105,15 @@ def main():
     
     parties = []
     ridings = []
+
+    hexaDecimal = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
     
     for i in range(partyCount):
         parties.append(Party("par{0}".format(i + 1), "P{0}".format(i + 1), "party-{0}".format(i + 1), "rgb({0},{1},{2})".format(random.randint(0,255), random.randint(0,255), random.randint(0,255))))
+        colour = "#"
+        for i2 in range(3):
+            colour += "{0}{1}".format(hexaDecimal[random.randint(0,15)],hexaDecimal[random.randint(0,15)])
+        parties.append(Party("par{0}".format(i + 1), "P{0}".format(i + 1), "party-{0}".format(i + 1), colour))
 
     for i1 in range(ridingGroups):
         for i2 in range(ridingCount):
