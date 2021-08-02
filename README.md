@@ -6,14 +6,17 @@ Refrence | Election Livestream Web App
 ------------ | -------------
 ![image](https://user-images.githubusercontent.com/34819460/127887846-1e2236d3-ba20-4954-9cc4-02200137a14e.png) | ![image](https://user-images.githubusercontent.com/34819460/127887356-23135b77-5ea6-412a-a7f8-6ab226d9cea7.png)
 
+![image](https://user-images.githubusercontent.com/34819460/127913792-c200b557-b154-4ddc-96b6-d71a36ee6e78.png)
+
+
 ## SetUp
 ### Download File and Open Index.html
 ![image](https://user-images.githubusercontent.com/34819460/127898993-df2601af-5894-4ec0-ad21-08e2ac45846b.png)
 ### Fillout settings
 #### Insert election csv
 ![image](https://user-images.githubusercontent.com/34819460/127910954-e148f8c4-6da4-4b62-990c-2bb0768b81e6.png)
-A party CSV should be inserted into the party data feild
-A riding CSV should be inserted into the riding data feild
+A party CSV should be inserted into the party data field
+A riding CSV should be inserted into the riding data field
 #### Set up
 Once, the files are inserted, the rotation timers should be set for the primary and secondary polling areas.
 ![image](https://user-images.githubusercontent.com/34819460/127911349-1e467455-c7be-484c-ba3a-0605b80ac087.png)
