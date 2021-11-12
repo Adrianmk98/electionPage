@@ -1,7 +1,7 @@
 # Election Livestream Page
 
 ## Description
-The Election Livestream page is a web app that simulates election Livestream. The web app is modeled of the Global News Decision Canada.
+The Election Livestream page is a web app that simulates election livestream. The web app is modeled of the Global News Decision Canada.
 Reference | Election Livestream Web App
 ------------ | -------------
 ![image](https://user-images.githubusercontent.com/34819460/127887846-1e2236d3-ba20-4954-9cc4-02200137a14e.png) | ![image](https://user-images.githubusercontent.com/34819460/127887356-23135b77-5ea6-412a-a7f8-6ab226d9cea7.png)
