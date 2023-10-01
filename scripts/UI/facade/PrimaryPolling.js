@@ -75,13 +75,20 @@ class PrimaryPolling extends Facade
 					tmp += '<h3>' + candidate.votes + '</h3>'
 				if(winner)
 				{
-					if(PrimaryPolling.#candidates.length > 2)
+					if(PrimaryPolling.#candidates.length >= 2)
 					{
-						tmp += '<h3>'+ (totalVoteCount - PrimaryPolling.#candidates[1].votes) +' lead'+'</h3>'
+						if(PrimaryPolling.#candidates[0].votes - PrimaryPolling.#candidates[1].votes === 0)
+						{
+							tmp += '<h4>'+ 'Tie' + '</h4>'
+						}
+						else
+						{
+							tmp += '<h4>'+ (PrimaryPolling.#candidates[0].votes - PrimaryPolling.#candidates[1].votes) +' lead'+'</h4>'
+						}
 					}
 					else
 					{
-						tmp += '<h3>'+ totalVoteCount +' lead'+'</h3>'
+						//tmp += '<h4>'+ totalVoteCount +' lead'+'</h4>'
 					}
 				}
 				tmp += '</div>'
